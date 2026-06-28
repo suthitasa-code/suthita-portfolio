@@ -25,7 +25,7 @@ body {
     overflow-x: hidden;
 }
 
-/* ================= HIGH-END LIQUID AURORA BACKGROUND (ว้าวกว่าเดิมมาก) ================= */
+/* ================= HIGH-END LIQUID AURORA BACKGROUND ================= */
 .bg-blob {
     position: fixed;
     border-radius: 50%;
@@ -95,7 +95,7 @@ h1, h2, h3, h4 {
     color: var(--primary-color);
 }
 
-/* ================= NAVIGATION BAR (ปรับให้เล็กลงเพื่อไม่ให้แย่งพื้นที่) ================= */
+/* ================= NAVIGATION BAR ================= */
 .top-nav {
     position: fixed;
     top: 20px;
@@ -140,7 +140,6 @@ h1, h2, h3, h4 {
     -webkit-text-fill-color: transparent;
     margin-bottom: 0.1rem;
     letter-spacing: -2px;
-    /* ขยับหลบเมนูนำทางไปทางซ้ายอีกนิดตามรีเควส */
     transform: translateX(-25px); 
     display: inline-block;
 }
@@ -150,7 +149,7 @@ h1, h2, h3, h4 {
     color: var(--text-light);
     margin-bottom: 1rem;
     font-weight: 600;
-    transform: translateX(-25px); /* ขยับตามหัวข้อหลัก */
+    transform: translateX(-25px);
 }
 
 .typed-cursor {
@@ -228,13 +227,13 @@ h1, h2, h3, h4 {
     border-color: #000;
 }
 
-/* ================= HERO SECTION (ปรับสัดส่วนคอมแพคขึ้นเพื่อให้เห็นปุ่มทันที) ================= */
+/* ================= HERO SECTION ================= */
 .hero-section {
     min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 60px 5% 20px; /* เพิ่ม Padding top หลบเมนูถาวร */
+    padding: 60px 5% 20px;
     background: transparent;
 }
 
@@ -243,7 +242,7 @@ h1, h2, h3, h4 {
     max-width: 1200px;
     width: 100%;
     align-items: center;
-    gap: 3rem; /* กระชับ Gap */
+    gap: 3rem;
     z-index: 2;
 }
 
@@ -252,7 +251,6 @@ h1, h2, h3, h4 {
     position: relative;
 }
 
-/* ปรับลดความสูงสไลเดอร์ลงเล็กน้อยเพื่อให้โครงสร้างทั้งหมดลอยสูงขึ้น เห็นปุ่มเลยไม่ต้องเลื่อนจอ */
 .slider {
     position: relative;
     width: 100%;
@@ -300,7 +298,6 @@ h1, h2, h3, h4 {
     flex: 1.6;
 }
 
-/* กระชับพื้นที่กล่องคำแนะนำตัว */
 .intro-box {
     padding: 1.25rem 1.75rem; 
     border-radius: 20px;
@@ -328,7 +325,7 @@ h1, h2, h3, h4 {
 
 .btn-group {
     margin-top: 1rem;
-    transform: translateX(-25px); /* ขยับตามกลุ่มหัวข้อ */
+    transform: translateX(-25px); 
 }
 
 /* ================= ABOUT SECTION ================= */
@@ -459,7 +456,8 @@ h1, h2, h3, h4 {
 
 .project-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    /* ปรับแต่ง Grid ให้ยืดหยุ่นในหน้าจอขนาดเล็ก */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 2.5rem;
     max-width: 1200px;
     margin: 0 auto;
@@ -575,7 +573,8 @@ h1, h2, h3, h4 {
 
 .contact-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    /* ปรับแต่งช่องทางการติดต่อให้เรียงตัวสวยงามแม้จอแคบ */
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     gap: 2.5rem;
     max-width: 1200px;
     margin: 0 auto 5rem;
@@ -662,33 +661,126 @@ footer {
     z-index: 2;
 }
 
-/* ================= RESPONSIVE ================= */
+
+/* ================= RESPONSIVE DESIGN (แก้ไขใหม่ให้สวยบนมือถือและไอแพดแนวตั้ง) ================= */
+
+/* สำหรับ iPad แนวตั้ง และหน้าจอขนาดกลาง */
 @media (max-width: 992px) {
     .hero-container {
         flex-direction: column;
         text-align: center;
+        margin-top: 50px; /* เพิ่มระยะห่างจากเมนูด้านบน */
     }
+    
     .hero-left { width: 100%; }
-    .intro-box .desc { text-align: center; }
-    .btn-group { justify-content: center; display: flex; transform: translateX(0); }
-    .gradient-text, .role-text { font-size: 3.5rem; transform: translateX(0); }
+    
+    .slider {
+        max-width: 320px;
+        height: 400px; /* ลดความสูงลงนิดนึงในไอแพด */
+    }
+
+    .hero-right {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* รีเซ็ตการขยับข้อความไปทางซ้าย ให้กลับมาอยู่กึ่งกลาง */
+    .gradient-text { 
+        font-size: 3.5rem; 
+        transform: translateX(0); 
+    }
+    .role-text { 
+        font-size: 1.8rem; /* แก้ไขไม่ให้ใหญ่เกินไปในไอแพด */
+        transform: translateX(0); 
+    }
+    .typed-cursor {
+        font-size: 1.8rem;
+    }
+
+    .intro-box {
+        text-align: center;
+        padding: 1.5rem;
+    }
+    .intro-box .desc { 
+        text-align: center; 
+    }
+    
+    .btn-group { 
+        justify-content: center; 
+        display: flex; 
+        transform: translateX(0); 
+        flex-wrap: wrap; /* เผื่อปุ่มล้นหน้าจอ */
+        gap: 10px;
+    }
+    .btn-gold { margin-right: 0; }
+
+    .cards-container {
+        flex-direction: column; /* ให้การ์ด About เรียงต่อกันบนล่างในไอแพด */
+    }
+    .info-card {
+        min-width: 100%;
+    }
 }
 
+/* สำหรับ โทรศัพท์มือถือ (Mobile Portrait) */
 @media (max-width: 768px) {
+    .hero-section {
+        padding: 100px 5% 2rem; /* ดันเนื้อหาลงมาหลบเมนูนำทาง */
+    }
+
     .top-nav {
         top: 15px;
         right: 50%;
         transform: translateX(50%);
         width: max-content;
+        max-width: 95%; /* ป้องกันเมนูล้นขอบจอ */
     }
     .top-nav ul {
-        gap: 15px;
-        padding: 10px 20px;
+        gap: 10px;
+        padding: 8px 15px;
     }
     .top-nav a {
-        font-size: 0.8rem;
+        font-size: 0.75rem; /* ปรับตัวหนังสือเมนูให้กะทัดรัด */
     }
+
     .bg-blob {
-        display: none; /* ปิดออร่าในมือถือกันหน่วงเครื่อง */
+        display: none; /* ปิดพื้นหลังออร่าในมือถือเพื่อลดการกระตุก/ซ้อนกัน */
+    }
+
+    .slider {
+        max-width: 280px;
+        height: 350px; /* ลดความสูงของรูปในมือถือไม่ให้กินพื้นที่มากไป */
+    }
+
+    .gradient-text { 
+        font-size: 2.5rem; /* ปรับขนาดหัวข้อพอร์ตโพลิโอให้พอดีจอมือถือ */
+        letter-spacing: 0;
+    }
+    .role-text { 
+        font-size: 1.4rem; 
+    }
+    .typed-cursor {
+        font-size: 1.4rem;
+    }
+
+    .section-title {
+        font-size: 2rem;
+        padding-top: 3rem;
+    }
+
+    .project-grid, .contact-grid {
+        grid-template-columns: 1fr; /* บังคับให้การ์ดเรียงแถวละ 1 อันในมือถือ */
+        gap: 1.5rem;
+    }
+
+    .btn {
+        padding: 8px 20px;
+        font-size: 0.9rem;
+    }
+
+    .skill-tags span {
+        font-size: 0.85rem;
+        padding: 8px 15px;
     }
 }
