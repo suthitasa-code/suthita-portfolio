@@ -1103,3 +1103,43 @@ body::after {
     opacity: 1 !important;
     transform: translateY(0) !important;
 }
+
+/* ---------- Info card hover lift ---------- */
+.info-card {
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                box-shadow 0.4s ease !important;
+    will-change: transform;
+}
+
+.info-card:hover {
+    transform: translateY(-22px) scale(1.03) !important;
+    box-shadow:
+        0 35px 70px rgba(128, 0, 0, 0.16),
+        0 0 0 2px rgba(255, 215, 0, 0.55),
+        0 0 60px rgba(255, 215, 0, 0.13) !important;
+}
+
+/* shine sweep บนการ์ด About */
+.info-card {
+    position: relative;
+    overflow: hidden;
+}
+.info-card::before {
+    content: '';
+    position: absolute;
+    top: -50%; left: -70%;
+    width: 45%; height: 200%;
+    background: linear-gradient(
+        to right,
+        transparent 0%,
+        rgba(255, 255, 255, 0.22) 50%,
+        transparent 100%
+    );
+    transform: skewX(-15deg);
+    transition: left 0.65s ease;
+    z-index: 1;
+    pointer-events: none;
+}
+.info-card:hover::before {
+    left: 130%;
+}
