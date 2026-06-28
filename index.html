@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suthita Portfolio | UX/UI Designer</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+<body>
+
+    <div class="bg-blob blob-1"></div>
+    <div class="bg-blob blob-2"></div>
+    <div class="bg-blob blob-3"></div>
+
+    <nav class="top-nav" data-aos="fade-down" data-aos-duration="1000">
+        <ul>
+            <li><a href="#about">ABOUT ME</a></li>
+            <li><a href="#skills">SKILLS & EXPERTISE</a></li>
+            <li><a href="#contact">GET IN TOUCH</a></li>
+        </ul>
+    </nav>
+
+    <section id="hero" class="hero-section">
+        <div class="hero-container">
+            <div class="hero-left" data-aos="fade-right" data-aos-duration="1200">
+                <div class="slider">
+                    <img src="Cream01.jpg" class="slide active" alt="Suthita 1">
+                    <img src="Cream02.jpg" class="slide" alt="Suthita 2">
+                    
+                    <button class="slider-btn prev" onclick="changeSlide(-1)">&#10094;</button>
+                    <button class="slider-btn next" onclick="changeSlide(1)">&#10095;</button>
+                </div>
+            </div>
+
+            <div class="hero-right" data-aos="fade-left" data-aos-duration="1200">
+                <h1 class="gradient-text">PORTFOLIO</h1>
+                <h2 class="role-text">I'm a <span id="typed-text"></span></h2>
+                <div class="intro-box glass-effect">
+                    <h3>นางสาว สุธิตา แสนสุริวงค์ (วิปครีม)</h3>
+                    <p class="subtitle">นักศึกษาชั้นปีที่ 4 สาขาวิทยาการคอมพิวเตอร์ <br>
+                    คณะวิทยาศาสตร์และวิศวกรรมศาสตร์ มหาวิทยาลัยเกษตรศาสตร์ <br>วิทยาเขตเฉลิมพระเกียรติ จังหวัดสกลนคร</p>
+                    <p class="desc">
+                        ดิฉันมีความสนใจอย่างยิ่งในด้าน <strong>UX/UI Design</strong> และการออกแบบที่ยึดผู้ใช้เป็นศูนย์กลาง (User-Centered Design) มีประสบการณ์ในการออกแบบ User Flow, Wireframe และ Prototype ด้วย <strong>Figma</strong> รวมถึงการพัฒนา Web Prototype ด้วย HTML, CSS และ JavaScript 
+                    </p>
+                    <p class="desc">
+                        มีความหลงใหลในการสร้างสรรค์ประสบการณ์ที่ดีที่สุดให้กับผู้ใช้งาน เป็นคนที่เปิดรับสิ่งใหม่ๆเสมอ พร้อมที่จะพัฒนาตนเอง เรียนรู้เทคโนโลยีและเทรนด์การออกแบบใหม่ๆ เพื่อนำมาประยุกต์ใช้ในการแก้ปัญหาจริง และพร้อมที่จะเรียนรู้งานกับทีมงานมืออาชีพในการฝึกงานครั้งนี้อย่างเต็มที่ค่ะ
+                    </p>
+                </div>
+                <div class="btn-group">
+                    <a href="#projects" class="btn btn-gold">My PROJECTS</a>
+                    <a href="soft-skills.html" class="btn btn-gold">Soft Skills</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about-section">
+        <h2 class="section-title" data-aos="fade-up">ABOUT ME</h2>
+        <div class="cards-container">
+            <div class="info-card glass-effect" data-aos="fade-up" data-aos-delay="100">
+                <h3><i class="fa-solid fa-address-card"></i> Introduction</h3>
+                <ul>
+                    <li><strong>ชื่อ-นามสกุล:</strong> นางสาว สุธิตา แสนสุริวงค์</li>
+                    <li><strong>ชื่อเล่น:</strong> วิปครีม</li>
+                    <li><strong>วันเกิด:</strong> 26 ธันวาคม 2547</li>
+                    <li><strong>อายุ:</strong> 21 ปี</li>
+                    <li><strong>ที่อยู่:</strong> อ.เมือง จ.สกลนคร</li>
+                    <li><strong>เกรดเฉลี่ยสะสม (GPAX):</strong> <span class="highlight">3.92</span></li>
+                    <li><strong>Languages:</strong> Thai (Native), English (Basic)</li>
+                </ul>
+            </div>
+            <div class="info-card glass-effect" data-aos="fade-up" data-aos-delay="200">
+                <h3><i class="fa-solid fa-graduation-cap"></i> Education</h3>
+                <div class="timeline">
+                    <h4>ระดับปริญญาตรี วิทยาศาสตรบัณฑิต</h4>
+                    <p>สาขาวิชาวิทยาการคอมพิวเตอร์</p>
+                    <p>คณะวิทยาศาสตร์และวิศวกรรมศาสตร์</p>
+                    <p>มหาวิทยาลัยเกษตรศาสตร์ วิทยาเขตเฉลิมพระเกียรติ จังหวัดสกลนคร</p>
+                    <span class="year">พ.ศ. 2566 – ปัจจุบัน (คาดว่าจะสำเร็จการศึกษา 2570)</span>
+                </div>
+                <div class="timeline">
+                    <h4>ระดับมัธยมศึกษา</h4>
+                    <p>แผนการเรียน วิทย์-คณิต</p>
+                    <p>จบการศึกษาจาก โรงเรียน สกลทวาปี</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="skills-section">
+        <h2 class="section-title" data-aos="fade-up">SKILLS & EXPERTISE</h2>
+        <div class="skills-container">
+            <div class="skill-group glass-effect" data-aos="fade-right" data-aos-delay="100">
+                <h3><i class="fa-solid fa-pen-nib"></i> ด้านการออกแบบ (Design)</h3>
+                <div class="skill-tags">
+                    <span>UX/UI Design</span>
+                    <span>Wireframing</span>
+                    <span>Prototyping</span>
+                    <span>User Flow</span>
+                    <span class="tool">Figma</span>
+                    <span class="tool">Canva</span>
+                </div>
+            </div>
+            <div class="skill-group glass-effect" data-aos="fade-left" data-aos-delay="200">
+                <h3><i class="fa-solid fa-code"></i> ด้านการพัฒนาเทคโนโลยี (Development)</h3>
+                <div class="skill-tags">
+                    <span class="tech">HTML5</span>
+                    <span class="tech">CSS3 (Responsive)</span>
+                    <span class="tech">JavaScript</span>
+                    <span class="tech">React.js</span>
+                    <span class="db">MySQL</span>
+                    <span class="db">phpMyAdmin</span>
+                </div>
+            </div>
+            <div class="skill-group glass-effect" data-aos="fade-up" data-aos-delay="300">
+                <h3><i class="fa-solid fa-lightbulb"></i> ทักษะเสริม (Other Skills)</h3>
+                <div class="skill-tags soft">
+                    <span>การคิดแก้ปัญหาเชิงสร้างสรรค์</span>
+                    <span>การสร้างสรรค์คอนเทนต์และการเล่าเรื่อง</span>
+                    <span>การทำงานเป็นทีม</span>
+                    <span>การเรียนรู้และปรับตัวอย่างต่อเนื่อง</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="projects-section">
+        <h2 class="section-title" data-aos="fade-up">MY PROJECTS</h2>
+        <p class="section-subtitle" data-aos="fade-up">ผลงาน/บทบาทเด่นจากโปรเจกต์และการเรียน</p>
+        
+        <div class="project-grid">
+            <div class="project-card gold-hover clickable-card glass-effect" data-aos="zoom-in" data-aos-delay="100" onclick="window.location.href='project-tcas.html'">
+                <img src="KUCSC.png" alt="TCAS Project">
+                <div class="project-content">
+                    <span class="badge">Senior Project</span>
+                    <h3>1. เว็บแอปพลิเคชันให้ข้อมูลการรับเข้าศึกษาของคณะวิทยาศาสตร์และวิศวะกรรมศาสตร์</h3>
+                    <p class="role"><strong>บทบาท:</strong> ผู้ออกแบบ UX/UI และพัฒนาส่วนหน้าบ้าน (Full-stack Development) (อยู่ในขั้นตอนการพัฒนา)</p>
+                    <ul class="project-details">
+                        <li>ออกแบบและพัฒนาเว็บแอปพลิเคชันจัดการข้อมูล TCAS คณะวิทยาศาสตร์และวิศวกรรมศาสตร์ มก.ฉกส.</li>
+                        <li>แบ่งสถาปัตยกรรมเป็นระบบส่วนหน้า (Front-end) และระบบจัดการหลังบ้าน (Back-end)</li>
+                        <li>ออกแบบระบบค้นหาและกรองข้อมูล (Search & Filter) พร้อมระบบสถานะ (Status Label) ช่วยให้ผู้ใช้งานเข้าถึงข้อมูลได้อย่างรวดเร็ว</li>
+                    </ul>
+                    <div class="project-actions">
+                        <button onclick="event.stopPropagation(); window.location.href='project-tcas.html'" class="btn btn-outline">ดูรายละเอียด</button>
+                        <a href="https://www.figma.com/design/L5aK6FKeSc2vlTlKSIWegG/ProjectKUSE?node-id=0-1&p=f&t=zSk56CsHgWxfFVtZ-0" target="_blank" class="btn btn-figma" onclick="event.stopPropagation();"><i class="fa-brands fa-figma"></i> Open in Figma</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card gold-hover clickable-card glass-effect" data-aos="zoom-in" data-aos-delay="200" onclick="window.location.href='project-petfood.html'">
+                <img src="Cat.jpg" alt="Pet Food App">
+                <div class="project-content">
+                    <span class="badge">Mini Project</span>
+                    <h3>2. โมบายแอปพลิเคชันสั่งซื้ออาหารเปียกแมว</h3>
+                    <p class="role"><strong>บทบาท:</strong> ออกแบบ UX/UI และผู้วางโครงสร้างการใช้งาน (User Flow)</p>
+                    <ul class="project-details">
+                        <li>โปรเจกต์วิชา Mobile App</li>
+                        <li>ออกแบบส่วนติดต่อผู้ใช้งาน (UI) เน้นการจัดวางองค์ประกอบที่เรียบง่ายสะอาดตา (Clean UI)</li>
+                        <li>มุ่งเน้นการเพิ่มความสะดวกในการเลือกซื้อสินค้าและการเข้าถึงระบบตะกร้าสินค้าอย่างรวดเร็ว (เป็น Mini Project ส่งอาจารย์ประจำวิชา)</li>
+                    </ul>
+                    <div class="project-actions">
+                        <button onclick="event.stopPropagation(); window.location.href='project-petfood.html'" class="btn btn-outline">ดูรายละเอียด</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card gold-hover clickable-card glass-effect" data-aos="zoom-in" data-aos-delay="300" onclick="window.location.href='project-qe.html'">
+                <img src="RICESHOP.png" alt="QE Exam Project">
+                <div class="project-content">
+                    <span class="badge">QE Exam (สอบประมวลความรู้ ปี 4)</span>
+                    <h3>3. ระบบขายไลเซนส์เกม (Rysen Game)</h3>
+                    <p class="role"><strong>บทบาท:</strong> ตำแหน่ง UX/UI Designer (พัฒนารูปแบบ Code Prototype)</p>
+                    <ul class="project-details">
+                        <li>โปรเจกต์สอบประมวลความรู้ พัฒนาระบบสารสนเทศด้วย Next.js และ MySQL ภายใต้เวลาจำกัดเพียง 3 วัน ร่วมกับทีม 11 คน</li>
+                        <li>แก้ปัญหาข้อจำกัดด้านเวลาโดยเลือกออกแบบ Frontend Prototype เป็นโค้ด (HTML, CSS, JS) โดยตรง</li>
+                        <li>ช่วยให้ Programmer สามารถคัดลอกโค้ดไปพัฒนาต่อได้ทันที ประหยัดเวลาในการแกะดีไซน์จาก Figma</li>
+                    </ul>
+                    <div class="project-actions">
+                        <button onclick="event.stopPropagation(); window.location.href='project-qe.html'" class="btn btn-outline">ดูรายละเอียด</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card gold-hover clickable-card glass-effect" data-aos="zoom-in" data-aos-delay="400" onclick="window.location.href='project-chatbot.html'">
+                <img src="chatbot.jpg" alt="Chatbot Project">
+                <div class="project-content">
+                    <span class="badge">Mini Project</span>
+                    <h3>4. แชทบอทผู้ช่วยดูแลผิวหน้า</h3>
+                    <p class="role"><strong>บทบาท:</strong> ออกแบบและพัฒนา</p>
+                    <ul class="project-details">
+                        <li>โปรเจกต์วิชา แชทบอท</li>
+                        <li>ออกแบบและพัฒนาแชทบอทบนแพลตฟอร์ม LINE</li>
+                        <li>สร้างระบบเพื่อให้คำปรึกษาด้านการดูแลผิวหน้าเบื้องต้นแก่ผู้ใช้งาน</li>
+                    </ul>
+                    <div class="project-actions">
+                        <a href="https://line.me/R/ti/p/ใส่ไอดีบอทของคุณตรงนี้" target="_blank" class="btn btn-outline" onclick="event.stopPropagation();"><i class="fa-brands fa-line"></i> เพิ่มเพื่อน เพื่อทดลองใช้งาน</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact-section">
+        <h2 class="section-title" data-aos="fade-up">GET IN TOUCH</h2>
+        <p class="section-subtitle-contact" data-aos="fade-up">หนูยินดีร่วมงานพร้อมเรียนรู้ประสบการณ์ และสิ่งใหม่ๆในการฝึกงานครั้งนี้ค่ะ</p>
+        
+        <div class="contact-grid">
+            <div class="contact-card glass-effect-contact" data-aos="flip-left" data-aos-delay="100">
+                <div class="contact-icon-box"><i class="fa-solid fa-phone"></i></div>
+                <h4>เบอร์โทรศัพท์</h4>
+                <p>096-648-8513</p>
+                <a href="tel:0966488513" class="contact-link-btn">เบอร์ของฉัน</a>
+            </div>
+    
+            <div class="contact-card glass-effect-contact" data-aos="flip-left" data-aos-delay="200">
+                <div class="contact-icon-box"><i class="fa-solid fa-envelope"></i></div>
+                <h4>Email</h4>
+                <p>Suthita.sa@ku.th</p>
+                <a href="mailto:Suthita.sa@ku.th" class="contact-link-btn">อีเมลของฉัน</a>
+            </div>
+    
+            <div class="contact-card glass-effect-contact" data-aos="flip-left" data-aos-delay="300">
+                <div class="contact-icon-box"><i class="fa-brands fa-facebook-f"></i></div>
+                <h4>Facebook</h4>
+                <p>วิปปิ้ง ครีม</p>
+                <a href="https://www.facebook.com/share/18oqtAEQtW/?mibextid=wwXIfr" target="_blank" class="contact-link-btn">ดูโปรไฟล์</a>
+            </div>
+    
+            <div class="contact-card glass-effect-contact" data-aos="flip-left" data-aos-delay="400">
+                <div class="contact-icon-box"><i class="fa-brands fa-instagram"></i></div>
+                <h4>Instagram</h4>
+                <p>cream_cheese.pk</p>
+                <a href="https://www.instagram.com/cream_cheese.pk?igsh=MWt6ZXF5enZkM21rMQ%3D%3D&utm_source=qr" target="_blank" class="contact-link-btn">ดูโปรไฟล์</a>
+            </div>
+    
+            <div class="contact-card glass-effect-contact" data-aos="flip-left" data-aos-delay="500">
+                <div class="contact-icon-box"><i class="fa-brands fa-line"></i></div>
+                <h4>Line ID</h4>
+                <p>makham-12</p>
+                <a href="https://line.me/ti/p/Oug9iJ1-7a" target="_blank" class="contact-link-btn">เพิ่มเพื่อน</a>
+            </div>
+    
+            <div class="contact-card glass-effect-contact" data-aos="flip-left" data-aos-delay="600">
+                <div class="contact-icon-box"><i class="fa-brands fa-tiktok"></i></div>
+                <h4>TikTok</h4>
+                <p>@creamm.pk</p>
+                <a href="https://www.tiktok.com/@creamm.pk?_r=1&_t=ZS-97aIUkO1yn2" target="_blank" class="contact-link-btn">ดูโปรไฟล์</a>
+            </div>
+        </div>
+        
+        <footer>
+            <p>&copy; 2026 Suthita Saensuriwong. Designed with passion for UX/UI.</p>
+        </footer>
+    </section>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
