@@ -760,18 +760,18 @@ footer {
         display: none; 
     }
 
-    /* กล่องสไลด์ให้กระชับขึ้น */
+    /* กล่องสไลด์ให้พอดีกับรูปแนวตั้ง (portrait) บนมือถือ */
     .slider {
         max-width: 280px;
-        height: 300px; 
+        height: 420px; /* เพิ่มจาก 300px → 420px ให้รูปแนวตั้งแสดงเต็ม */
         border: 3px solid rgba(255,255,255,0.8);
     }
     
-    /* พระเอกตัวจริง บังคับรูปแสดง 100% ไม่โดนตัดขาด */
+    /* บังคับรูปแสดง 100% ไม่โดนตัดขาด */
     .slide {
         width: 100% !important;
         height: 100% !important;
-        object-fit: contain !important; /* <--- ตรงนี้สำคัญมาก ห้ามแก้กลับเป็น cover นะคะ */
+        object-fit: contain !important;
         object-position: center !important; 
     }
 
