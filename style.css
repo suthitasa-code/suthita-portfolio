@@ -456,7 +456,6 @@ h1, h2, h3, h4 {
 
 .project-grid {
     display: grid;
-    /* ปรับแต่ง Grid ให้ยืดหยุ่นในหน้าจอขนาดเล็ก */
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 2.5rem;
     max-width: 1200px;
@@ -573,7 +572,6 @@ h1, h2, h3, h4 {
 
 .contact-grid {
     display: grid;
-    /* ปรับแต่งช่องทางการติดต่อให้เรียงตัวสวยงามแม้จอแคบ */
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     gap: 2.5rem;
     max-width: 1200px;
@@ -661,22 +659,36 @@ footer {
     z-index: 2;
 }
 
+/* ================= RESPONSIVE DESIGN (FIXED!) ================= */
 
-/* ================= RESPONSIVE DESIGN (แก้ไขใหม่ให้สวยบนมือถือและไอแพดแนวตั้ง) ================= */
-
-/* สำหรับ iPad แนวตั้ง และหน้าจอขนาดกลาง */
+/* สำหรับ iPad แนวตั้ง และหน้าจอขนาดกลาง (แท็บเล็ต) */
 @media (max-width: 992px) {
+    .top-nav {
+        /* บังคับให้อยู่กึ่งกลางหน้าจอ */
+        left: 50% !important;
+        right: auto !important;
+        transform: translateX(-50%) !important;
+        width: max-content;
+    }
+
     .hero-container {
         flex-direction: column;
         text-align: center;
-        margin-top: 50px; /* เพิ่มระยะห่างจากเมนูด้านบน */
+        margin-top: 80px; 
+        gap: 2rem;
     }
     
     .hero-left { width: 100%; }
     
     .slider {
         max-width: 320px;
-        height: 400px; /* ลดความสูงลงนิดนึงในไอแพด */
+        height: 400px; 
+    }
+
+    .slide {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
     }
 
     .hero-right {
@@ -685,13 +697,12 @@ footer {
         align-items: center;
     }
 
-    /* รีเซ็ตการขยับข้อความไปทางซ้าย ให้กลับมาอยู่กึ่งกลาง */
     .gradient-text { 
         font-size: 3.5rem; 
         transform: translateX(0); 
     }
     .role-text { 
-        font-size: 1.8rem; /* แก้ไขไม่ให้ใหญ่เกินไปในไอแพด */
+        font-size: 1.8rem; 
         transform: translateX(0); 
     }
     .typed-cursor {
@@ -710,51 +721,59 @@ footer {
         justify-content: center; 
         display: flex; 
         transform: translateX(0); 
-        flex-wrap: wrap; /* เผื่อปุ่มล้นหน้าจอ */
+        flex-wrap: wrap;
         gap: 10px;
     }
     .btn-gold { margin-right: 0; }
 
     .cards-container {
-        flex-direction: column; /* ให้การ์ด About เรียงต่อกันบนล่างในไอแพด */
+        flex-direction: column; 
     }
     .info-card {
         min-width: 100%;
     }
 }
 
-/* สำหรับ โทรศัพท์มือถือ (Mobile Portrait) */
+/* สำหรับ โทรศัพท์มือถือ (Mobile Portrait) - แก้ไขใหม่ล่าสุด */
 @media (max-width: 768px) {
     .hero-section {
-        padding: 100px 5% 2rem; /* ดันเนื้อหาลงมาหลบเมนูนำทาง */
+        padding: 100px 5% 2rem; 
     }
 
+    /* 1. แก้เมนูให้อยู่ด้านขวาปกติ ไม่ลอยไปซ้าย */
     .top-nav {
         top: 15px;
-        right: 50%;
-        transform: translateX(50%);
-        width: max-content;
-        max-width: 95%; /* ป้องกันเมนูล้นขอบจอ */
+        right: 15px !important; /* บังคับชิดขวา */
+        left: auto !important;  /* ยกเลิกค่าซ้ายเผื่อมีค้าง */
+        transform: none !important; /* ยกเลิกตัวการที่ทำให้ลอยเบี้ยว */
+        width: auto;
     }
     .top-nav ul {
         gap: 10px;
         padding: 8px 15px;
     }
     .top-nav a {
-        font-size: 0.75rem; /* ปรับตัวหนังสือเมนูให้กะทัดรัด */
+        font-size: 0.75rem; 
     }
 
     .bg-blob {
-        display: none; /* ปิดพื้นหลังออร่าในมือถือเพื่อลดการกระตุก/ซ้อนกัน */
+        display: none; 
     }
 
+    /* 2. แก้รูปภาพให้แสดงเต็ม โฟกัสถูกจุด ไม่ขาดครึ่ง */
     .slider {
         max-width: 280px;
-        height: 350px; /* ลดความสูงของรูปในมือถือไม่ให้กินพื้นที่มากไป */
+        height: 380px; /* ยืดความสูงขึ้นมาให้สัดส่วนสมดุลกับคอม */
+    }
+    .slide {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
+        object-position: top center !important; /* บังคับให้โฟกัสที่ด้านบน (หัว/หน้า) รูปจะได้ไม่แหว่ง */
     }
 
     .gradient-text { 
-        font-size: 2.5rem; /* ปรับขนาดหัวข้อพอร์ตโพลิโอให้พอดีจอมือถือ */
+        font-size: 2.5rem; 
         letter-spacing: 0;
     }
     .role-text { 
@@ -770,7 +789,7 @@ footer {
     }
 
     .project-grid, .contact-grid {
-        grid-template-columns: 1fr; /* บังคับให้การ์ดเรียงแถวละ 1 อันในมือถือ */
+        grid-template-columns: 1fr; 
         gap: 1.5rem;
     }
 
