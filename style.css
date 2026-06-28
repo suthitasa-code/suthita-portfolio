@@ -261,12 +261,13 @@ h1, h2, h3, h4 {
     overflow: hidden;
     box-shadow: 0 20px 40px rgba(0,0,0,0.12);
     border: 5px solid rgba(255,255,255,0.8);
+    background: rgba(255,255,255,0.3); /* ใส่พื้นหลังนิดๆ เผื่อรูปเล็กลงจะได้ไม่โล่ง */
 }
 
 .slide {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: cover; /* คอมพิวเตอร์จอใหญ่ยังใช้ cover ได้ปกติ */
     position: absolute;
     opacity: 0;
     transition: opacity 0.6s ease-in-out;
@@ -661,10 +662,9 @@ footer {
 
 /* ================= RESPONSIVE DESIGN (FIXED!) ================= */
 
-/* สำหรับ iPad แนวตั้ง และหน้าจอขนาดกลาง (แท็บเล็ต) */
+/* สำหรับ iPad แนวตั้ง และหน้าจอขนาดกลาง (แนวนอนมือถือ) */
 @media (max-width: 992px) {
     .top-nav {
-        /* บังคับให้อยู่กึ่งกลางหน้าจอ */
         left: 50% !important;
         right: auto !important;
         transform: translateX(-50%) !important;
@@ -682,13 +682,14 @@ footer {
     
     .slider {
         max-width: 320px;
-        height: 400px; 
+        height: 350px; 
     }
 
     .slide {
         width: 100% !important;
         height: 100% !important;
-        object-fit: cover !important;
+        object-fit: contain !important; /* <--- บังคับรูปไม่ให้โดนตัดในไอแพด/แนวนอน */
+        object-position: center !important;
     }
 
     .hero-right {
@@ -740,12 +741,11 @@ footer {
         padding: 100px 5% 2rem; 
     }
 
-    /* 1. แก้เมนูให้อยู่ด้านขวาปกติ ไม่ลอยไปซ้าย */
     .top-nav {
         top: 15px;
-        right: 15px !important; /* บังคับชิดขวา */
-        left: auto !important;  /* ยกเลิกค่าซ้ายเผื่อมีค้าง */
-        transform: none !important; /* ยกเลิกตัวการที่ทำให้ลอยเบี้ยว */
+        right: 15px !important; 
+        left: auto !important;  
+        transform: none !important; 
         width: auto;
     }
     .top-nav ul {
@@ -760,16 +760,19 @@ footer {
         display: none; 
     }
 
-    /* 2. แก้รูปภาพให้แสดงเต็ม โฟกัสถูกจุด ไม่ขาดครึ่ง */
+    /* กล่องสไลด์ให้กระชับขึ้น */
     .slider {
         max-width: 280px;
-        height: 380px; /* ยืดความสูงขึ้นมาให้สัดส่วนสมดุลกับคอม */
+        height: 300px; 
+        border: 3px solid rgba(255,255,255,0.8);
     }
+    
+    /* พระเอกตัวจริง บังคับรูปแสดง 100% ไม่โดนตัดขาด */
     .slide {
         width: 100% !important;
         height: 100% !important;
-        object-fit: cover !important;
-        object-position: top center !important; /* บังคับให้โฟกัสที่ด้านบน (หัว/หน้า) รูปจะได้ไม่แหว่ง */
+        object-fit: contain !important; /* <--- ตรงนี้สำคัญมาก ห้ามแก้กลับเป็น cover นะคะ */
+        object-position: center !important; 
     }
 
     .gradient-text { 
