@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KUSE admission | Senior Project - Suthita Saensuriwong</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        .pd-wrap{ max-width:1180px; margin:0 auto; padding:0 5%; position:relative; z-index:2; }
+
+        .pd-hero{ padding:140px 0 50px; text-align:center; }
+        .pd-kicker{
+            display:inline-flex; align-items:center; gap:8px;
+            background:rgba(128,0,0,0.08); color:var(--primary-color);
+            padding:7px 20px; border-radius:30px; font-weight:600; font-size:.85rem;
+            margin-bottom:22px; border:1px solid rgba(128,0,0,0.15);
+        }
+        .pd-hero h1{
+            font-size:3rem; font-weight:800; letter-spacing:-1px;
+            background:linear-gradient(45deg, var(--primary-color), #c0392b);
+            -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+            margin-bottom:8px;
+        }
+        .pd-hero h2{ font-size:1.25rem; color:var(--text-main); font-weight:500; margin-bottom:20px; }
+        .pd-hero .pd-timeframe{ color: var(--primary-color); font-weight:600; font-size: .95rem; margin-bottom: 18px; }
+        .pd-hero p.pd-sub{ color:var(--text-light); max-width:760px; margin:0 auto; line-height:1.9; text-align:center; }
+
+        .pd-cover{
+            position:relative; border-radius:24px; overflow:hidden;
+            box-shadow:0 25px 50px rgba(128,0,0,0.12); border:6px solid white;
+            aspect-ratio:21/9;
+        }
+        .pd-cover .pd-cover-slide{
+            position:absolute; inset:0; width:100%; height:100%;
+            display:block; cursor:zoom-in; object-fit:cover;
+            opacity:0; transition:opacity 1s ease;
+        }
+        .pd-cover .pd-cover-slide.active{ opacity:1; }
+        .pd-cover-dots{
+            position:absolute; bottom:14px; left:0; right:0;
+            display:flex; justify-content:center; gap:8px; z-index:3;
+        }
+        .pd-cover-dots span{
+            width:9px; height:9px; border-radius:50%; background:rgba(255,255,255,0.55);
+            transition:.3s;
+        }
+        .pd-cover-dots span.active{ background:white; width:22px; border-radius:6px; }
+        .pd-hero-text{ margin-top:34px; }
+
+        .pd-section{ padding:60px 0 10px; }
+        .pd-section-head{ text-align:center; margin-bottom:34px; }
+        .pd-section-head h2{
+            font-size:1.9rem; font-weight:700; color:var(--text-main);
+            display:flex; align-items:center; justify-content:center; gap:12px;
+        }
+        .pd-section-head h2 i{
+            color:var(--primary-color); background:rgba(128,0,0,0.08);
+            width:46px; height:46px; border-radius:14px; display:flex;
+            align-items:center; justify-content:center; font-size:1.1rem;
+        }
+        .pd-section-head::after{
+            content:''; width:60px; height:4px; background-color:var(--gold);
+            display:block; margin:14px auto 0; border-radius:2px;
+        }
+        .pd-section-head p{ color:var(--text-light); margin-top:10px; }
+
+        .pd-grid-2{ display:grid; grid-template-columns:1fr 1fr; gap:28px; }
+        @media (max-width:880px){ .pd-grid-2{ grid-template-columns:1fr; } }
+
+        .pd-card{
+            background:rgba(255,255,255,0.85); backdrop-filter:blur(10px);
+            border:1px solid rgba(255,255,255,0.6);
+            border-radius:20px; padding:30px;
+            box-shadow:0 10px 30px rgba(0,0,0,0.04);
+            border-top:5px solid var(--primary-color);
+        }
+        .pd-card.gold-top{ border-top-color: var(--gold); }
+        .pd-card h3{ font-size:1.1rem; margin-bottom:14px; display:flex; align-items:center; gap:10px; color:var(--primary-color); }
+        .pd-card p, .pd-card li{ color:var(--text-light); line-height:1.9; font-size:.96rem; }
+        .pd-card ul{ padding-left:20px; }
+        .pd-card ul li{ margin-bottom:8px; }
+        .pd-card ul li::marker{ color: var(--gold); }
+
+        .pd-pills{ display:flex; flex-wrap:wrap; gap:10px; margin-top:16px; }
+        .pd-pills span{
+            background:rgba(128,0,0,0.06); color:var(--primary-color);
+            border:1px solid rgba(128,0,0,0.15);
+            padding:7px 16px; border-radius:20px; font-size:.85rem; font-weight:500;
+        }
+        .pd-status{ display:flex; gap:12px; flex-wrap:wrap; margin-top:16px; }
+        .pd-status span{ padding:7px 18px; border-radius:20px; font-size:.85rem; font-weight:600; }
+        .status-wait{ background:#FFF6DA; color:#a87d00; }
+        .status-open{ background:#E3F6E8; color:#1f8a3b; }
+        .status-close{ background:#FBE6E6; color:var(--primary-color); }
+
+        .pd-process-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:28px; }
+        @media (max-width:880px){ .pd-process-grid{ grid-template-columns:1fr; } }
+        .pd-process-card{
+            background:rgba(255,255,255,0.85); border-radius:20px; overflow:hidden;
+            box-shadow:0 10px 30px rgba(0,0,0,0.04); border:1px solid rgba(255,255,255,0.6);
+        }
+        .pd-img-frame{
+            width:100%; aspect-ratio:4/3; overflow:hidden; position:relative;
+            background:linear-gradient(135deg, #fbeaea, #fdf6e3);
+            display:flex; align-items:center; justify-content:center;
+        }
+        .pd-img-frame img{ width:100%; height:100%; object-fit:cover; cursor:zoom-in; transition:transform .4s ease; }
+        .pd-img-frame:hover img{ transform:scale(1.05); }
+        .pd-img-frame .pd-zoom-hint{
+            position:absolute; bottom:10px; right:10px; background:rgba(0,0,0,0.55);
+            color:white; width:32px; height:32px; border-radius:50%; display:flex;
+            align-items:center; justify-content:center; font-size:.8rem; pointer-events:none;
+        }
+        .pd-img-frame.placeholder{ flex-direction:column; gap:10px; color:var(--primary-color); opacity:.55; font-size:.85rem; text-align:center; padding:20px; }
+        .pd-process-step-num{
+            position:absolute; top:12px; left:12px; background:var(--primary-color); color:white;
+            width:30px; height:30px; border-radius:50%; display:flex; align-items:center; justify-content:center;
+            font-weight:700; font-size:.85rem; z-index:2;
+        }
+        .pd-process-body{ padding:20px 22px 24px; }
+        .pd-process-body h4{ color:var(--primary-color); font-size:1.05rem; margin-bottom:6px; }
+        .pd-process-body p{ color:var(--text-light); font-size:.9rem; line-height:1.8; }
+
+        .pd-tabs{ display:flex; justify-content:center; gap:14px; margin-bottom:30px; flex-wrap:wrap; }
+        .pd-tab-btn{
+            padding:10px 26px; border-radius:30px; border:2px solid var(--primary-color);
+            background:transparent; color:var(--primary-color); font-weight:600; cursor:pointer;
+            font-family:'Prompt',sans-serif; font-size:.92rem; transition:.3s;
+        }
+        .pd-tab-btn.active, .pd-tab-btn:hover{ background:var(--primary-color); color:white; }
+        .pd-showcase-panel{ display:none; }
+        .pd-showcase-panel.active{ display:block; }
+        .pd-showcase-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+        @media (max-width:880px){ .pd-showcase-grid{ grid-template-columns:1fr 1fr; } }
+        @media (max-width:600px){ .pd-showcase-grid{ grid-template-columns:1fr; } }
+        .pd-showcase-item{ border-radius:18px; overflow:hidden; box-shadow:0 10px 25px rgba(0,0,0,0.06); border:5px solid white; background:white; }
+        .pd-showcase-item .pd-img-frame{ aspect-ratio:16/10; }
+        .pd-showcase-cap{ padding:10px 14px; font-size:.85rem; color:var(--text-light); font-weight:500; }
+
+        /* Back-end showcase: show full image uncropped, same frame size as Front-end */
+        #panel-be .pd-img-frame{
+            background:#ffffff;
+        }
+        #panel-be .pd-img-frame img{
+            object-fit:contain;
+        }
+
+        .pd-tools{ display:flex; flex-wrap:wrap; gap:14px; justify-content:center; }
+        .pd-tools span{
+            background:white; border:1px solid rgba(128,0,0,0.12);
+            box-shadow:0 6px 18px rgba(0,0,0,0.04);
+            padding:10px 22px; border-radius:30px; font-size:.92rem;
+            display:flex; align-items:center; gap:8px; color:var(--text-main); font-weight:500;
+        }
+        .pd-tools span i{ color:var(--primary-color); }
+
+        .pd-back-wrap{ text-align:center; margin:60px 0 10px; }
+
+        .pd-lightbox{
+            position:fixed; inset:0; background:rgba(20,10,10,0.88); z-index:9999;
+            display:none; align-items:center; justify-content:center; padding:40px; flex-direction:column;
+        }
+        .pd-lightbox.open{ display:flex; }
+        .pd-lightbox img{ max-width:90vw; max-height:80vh; border-radius:14px; box-shadow:0 30px 60px rgba(0,0,0,0.5); }
+        .pd-lightbox .pd-lb-caption{ color:white; margin-top:16px; font-size:.95rem; opacity:.85; text-align:center; max-width:600px; }
+        .pd-lightbox .pd-lb-close{
+            position:absolute; top:24px; right:30px; color:white; font-size:1.8rem; cursor:pointer;
+            background:rgba(255,255,255,0.12); width:44px; height:44px; border-radius:50%;
+            display:flex; align-items:center; justify-content:center;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-blob blob-1"></div>
+    <div class="bg-blob blob-2"></div>
+    <div class="bg-blob blob-3"></div>
+
+    <nav class="top-nav" data-aos="fade-down" data-aos-duration="1000">
+        <ul>
+            <li><a href="index.html#about">ABOUT ME</a></li>
+            <li><a href="index.html#skills">SKILLS & EXPERTISE</a></li>
+            <li><a href="index.html#projects">PROJECTS</a></li>
+            <li><a href="index.html#contact">GET IN TOUCH</a></li>
+        </ul>
+    </nav>
+
+    <section class="pd-wrap pd-hero" data-aos="fade-up">
+        <div class="pd-hero-text">
+            <span class="pd-kicker"><i class="fa-solid fa-graduation-cap"></i> Senior Project</span>
+            <h1>KUSE ADMISSION</h1>
+            <h2>เว็บแอปพลิเคชันให้ข้อมูลการรับเข้าศึกษา คณะวิทยาศาสตร์และวิศวกรรมศาสตร์</h2>
+            <p class="pd-timeframe">
+                <i class="fa-regular fa-calendar"></i> โปรเจกต์จบ (Senior Project) พัฒนาในช่วงชั้นปีที่ 3–4
+                มหาวิทยาลัยเกษตรศาสตร์ วิทยาเขตเฉลิมพระเกียรติ จังหวัดสกลนคร (KUSE)
+            </p>
+            <p class="pd-sub">
+                พัฒนาขึ้นเพื่อเป็นศูนย์กลางรวบรวมข้อมูลข่าวสารและประกาศรับสมัครเข้าศึกษาต่อของคณะวิทยาศาสตร์และวิศวกรรมศาสตร์ มก.ฉกส. ให้อยู่ในที่เดียว ค้นหาง่าย เป็นระบบ และเข้าถึงข้อมูลที่ถูกต้องทันสมัยได้สะดวกยิ่งขึ้น
+            </p>
+        </div>
+        <br>
+        <div class="pd-cover" data-aos="zoom-in" data-aos-delay="150">
+            <img src="image/index.png" class="pd-cover-slide active" alt="หน้าแรกของเว็บไซต์ KUSE แอดมิดชัน"
+                 onclick="pdOpenLightbox(this.src, 'หน้าแรกของเว็บไซต์ KUSE แอดมิดชัน')">
+            <img src="image/index22.png" class="pd-cover-slide" alt="หน้าประกาศรับสมัคร"
+                 onclick="pdOpenLightbox(this.src, 'หน้าแรกของเว็บไซต์ KUSE แอดมิดชัน')">
+            <img src="image/index33.png" class="pd-cover-slide" alt="หน้าหลักสูตร"
+                 onclick="pdOpenLightbox(this.src, 'หน้าหลักสูตร KUSE แอดมิดชัน')">
+            <div class="pd-cover-dots">
+                <span class="active"></span><span></span><span></span>
+            </div>
+        </div>
+    </section>
+
+    <section class="pd-wrap pd-section">
+        <div class="pd-grid-2">
+            <div class="pd-card" data-aos="fade-right">
+                <h3><i class="fa-solid fa-triangle-exclamation"></i> Problem</h3>
+                <p>
+                    แม้คณะฯ จะมีช่องทางเผยแพร่ข้อมูล เช่น เว็บไซต์และเพจ Facebook แต่ข้อมูลการรับเข้าศึกษายังคงกระจัดกระจายและไม่เป็นระบบ ผู้สนใจต้องใช้เวลานานในการค้นหาประกาศย้อนหลัง โดยเฉพาะข้อมูลที่มีเฉพาะบนโซเชียลมีเดียซึ่งถูกโพสต์ใหม่มาแทนที่อยู่เสมอ ทำให้พลาดข้อมูลสำคัญได้ง่าย
+                </p>
+            </div>
+            <div class="pd-card gold-top" data-aos="fade-left">
+                <h3><i class="fa-solid fa-lightbulb"></i> Solution</h3>
+                <p>
+                    พัฒนาเว็บแอปพลิเคชัน “KUSE แอดมิดชัน” ให้เป็นศูนย์กลางข้อมูลการรับเข้าศึกษาของคณะโดยเฉพาะ พร้อมระบบค้นหาและกรองข้อมูล (Search & Filter) ระบบสถานะประกาศ (Status Label) และระบบดาวน์โหลดเอกสารรับสมัคร เพื่อให้ผู้สนใจเข้าถึงข้อมูลที่ถูกต้อง ทันสมัย และตรวจสอบได้ง่าย
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="pd-wrap pd-section" data-aos="fade-up">
+        <div class="pd-section-head">
+            <h2><i class="fa-solid fa-user-pen"></i> My Role</h2>
+        </div>
+        <div class="pd-card" style="max-width:820px; margin:0 auto;">
+            <ul>
+                <li>ออกแบบ UX/UI ของระบบทั้งหมดด้วย Figma</li>
+                <li>วิเคราะห์ User Flow และออกแบบโครงสร้างของระบบ</li>
+                <li>พัฒนาส่วนหน้าบ้าน (Front-end) ด้วย HTML, CSS, JavaScript และ React</li>
+                <li>ออกแบบโครงสร้างฐานข้อมูลและระบบจัดการประกาศรับสมัคร (TCAS แต่ละรอบ)</li>
+            </ul>
+            <p style="margin-top:14px;"><strong style="color:var(--primary-color);">สถานะโปรเจกต์ :</strong> อยู่ระหว่างการพัฒนา (In Progress)</p>
+        </div>
+    </section>
+
+    <section class="pd-wrap pd-section" data-aos="fade-up">
+        <div class="pd-section-head">
+            <h2><i class="fa-solid fa-diagram-project"></i> ขอบเขตของระบบ</h2>
+        </div>
+        <div class="pd-grid-2">
+            <div class="pd-card">
+                <h3><i class="fa-solid fa-users"></i> ฝั่งผู้ใช้งานทั่วไป (Front-end)</h3>
+                <ul>
+                    <li>ดูข้อมูลการรับเข้าศึกษาและหลักสูตรที่เปิดสอนของคณะ</li>
+                    <li>ดูประกาศรับสมัครปัจจุบันและย้อนหลัง พร้อมดาวน์โหลดไฟล์ PDF</li>
+                    <li>ค้นหาประกาศผ่าน Search Box และ Dropdown Filter</li>
+                    <li>ดูสถานะประกาศแบบ Real-time ผ่าน Status Label</li>
+                </ul>
+                <div class="pd-status">
+                    <span class="status-wait">รอเปิดรับ</span>
+                    <span class="status-open">กำลังเปิดรับ</span>
+                    <span class="status-close">ปิดรับแล้ว</span>
+                </div>
+            </div>
+            <div class="pd-card gold-top">
+                <h3><i class="fa-solid fa-user-shield"></i> ฝั่งผู้ดูแลระบบ (Back-end)</h3>
+                <ul>
+                    <li>เข้าสู่ระบบและจัดการบัญชีผู้ดูแลระบบ</li>
+                    <li>จัดการประกาศรับสมัครในแต่ละรอบของระบบ TCAS (รอบ 1–4)</li>
+                    <li>จัดการไฟล์เอกสารประกาศและระยะเวลาการรับสมัคร</li>
+                    <li>จัดการข้อมูลหลักสูตรและรูปภาพแบนเนอร์ประชาสัมพันธ์</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="pd-card" style="margin-top:24px;" data-aos="fade-up">
+            <h3><i class="fa-solid fa-book"></i> หลักสูตรที่เปิดสอนในระบบ</h3>
+            <div class="pd-pills">
+                <span>วิศวกรรมโยธา</span>
+                <span>วิศวกรรมไฟฟ้า</span>
+                <span>วิศวกรรมเครื่องกลและการผลิต</span>
+                <span>วิศวกรรมอุตสาหการ</span>
+                <span>วิศวกรรมคอมพิวเตอร์</span>
+                <span>วิศวกรรมสิ่งแวดล้อมเพื่อการพัฒนาอย่างยั่งยืน</span>
+                <span>วิทยาการคอมพิวเตอร์</span>
+                <span>เคมีประยุกต์</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="pd-wrap pd-section" data-aos="fade-up">
+        <div class="pd-section-head">
+            <h2><i class="fa-solid fa-route"></i> Process</h2>
+            <p>ออกแบบโดยใช้แนวคิด User-Centered Design — คลิกที่รูปเพื่อดูขนาดเต็ม</p>
+        </div>
+
+        <div class="pd-process-grid">
+            <div class="pd-process-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="pd-img-frame">
+                    <span class="pd-process-step-num">1</span>
+                    <img src="image/User Persona.png" alt="User Persona"
+                         onclick="pdOpenLightbox(this.src, 'User Persona — ตัวแทนกลุ่มผู้ใช้งานเพื่อวิเคราะห์พฤติกรรมและความต้องการ')"
+                         onerror="this.parentElement.innerHTML='<span class=&quot;pd-process-step-num&quot;>1</span><i class=&quot;fa-solid fa-id-card&quot; style=&quot;font-size:1.8rem&quot;></i><span>ใส่รูปที่ image/persona.jpg</span>'">
+                </div>
+                <div class="pd-process-body">
+                    <h4>User Persona</h4>
+                    <p>ภาพตัวแทนกลุ่มผู้ใช้งานหลักของระบบ ( นักเรียนที่สนใจสมัครเรียน) ใช้วิเคราะห์พฤติกรรม เป้าหมาย และ Pain Point ก่อนเริ่มออกแบบระบบ</p>
+                </div>
+            </div>
+
+            <div class="pd-process-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="pd-img-frame">
+                    <span class="pd-process-step-num">2</span>
+                    <img src="image/Wireframe.png" alt="Wireframe"
+                         onclick="pdOpenLightbox(this.src, 'Wireframe — โครงร่างหน้าจอก่อนพัฒนาจริง')"
+                         onerror="this.parentElement.innerHTML='<span class=&quot;pd-process-step-num&quot;>2</span><i class=&quot;fa-solid fa-pen-ruler&quot; style=&quot;font-size:1.8rem&quot;></i><span>ใส่รูปที่ image/wireframe.jpg</span>'">
+                </div>
+                <div class="pd-process-body">
+                    <h4>Wireframe</h4>
+                    <p>โครงร่างเค้าโครงหน้าจอ (Layout) แบบคร่าว ๆ ที่ใช้วางตำแหน่งองค์ประกอบของแต่ละหน้า ก่อนนำไปออกแบบ UI และพัฒนาจริง</p>
+                </div>
+            </div>
+
+            <div class="pd-process-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="pd-img-frame">
+                    <span class="pd-process-step-num">3</span>
+                    <img src="image/User Journey Map.png" alt="User Journey Map"
+                         onclick="pdOpenLightbox(this.src, 'User Journey Map — เส้นทางและความรู้สึกของผู้ใช้งานในแต่ละขั้นตอน')"
+                         onerror="this.parentElement.innerHTML='<span class=&quot;pd-process-step-num&quot;>3</span><i class=&quot;fa-solid fa-route&quot; style=&quot;font-size:1.8rem&quot;></i><span>ใส่รูปที่ image/journey-map.jpg</span>'">
+                </div>
+                <div class="pd-process-body">
+                    <h4>User Journey Map</h4>
+                    <p>แผนภาพแสดงเส้นทางการใช้งานของผู้ใช้ตั้งแต่ต้นจนจบ เพื่อวิเคราะห์ขั้นตอนและ Pain Point ในแต่ละจุดสัมผัส (Touchpoint)</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="pd-wrap pd-section" data-aos="fade-up">
+        <div class="pd-section-head">
+            <h2><i class="fa-solid fa-flag-checkered"></i> Result</h2>
+        </div>
+        <div class="pd-card" style="max-width:820px; margin:0 auto;">
+            <ul>
+                <li>ผู้ใช้งานสามารถค้นหาและเข้าถึงข้อมูลการรับเข้าศึกษาได้ง่ายและรวดเร็วขึ้น</li>
+                <li>ลดความกระจัดกระจายของข้อมูลที่เคยอยู่หลายแพลตฟอร์ม</li>
+                <li>เพิ่มประสิทธิภาพในการประชาสัมพันธ์ของคณะให้เป็นระเบียบมากขึ้น</li>
+                <li>รองรับการตรวจสอบประกาศรับสมัครย้อนหลังได้อย่างเป็นระบบ</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="pd-wrap pd-section" data-aos="fade-up">
+        <div class="pd-section-head">
+            <h2><i class="fa-solid fa-images"></i> Project Showcase</h2>
+            <p>คลิกที่รูปเพื่อดูขนาดเต็ม</p>
+        </div>
+
+        <div class="pd-tabs">
+            <button class="pd-tab-btn active" onclick="pdShowTab('fe', this)"><i class="fa-solid fa-display"></i> ฝั่งผู้ใช้งาน (Front-end)</button>
+            <button class="pd-tab-btn" onclick="pdShowTab('be', this)"><i class="fa-solid fa-user-shield"></i> ฝั่งแอดมิน (Back-end)</button>
+        </div>
+
+        <div class="pd-showcase-panel active" id="panel-fe">
+            <div class="pd-showcase-grid">
+                <div class="pd-showcase-item" data-aos="zoom-in" data-aos-delay="50">
+                    <div class="pd-img-frame">
+                        <img src="image/index1.png" alt="หน้าแรก"
+                             onclick="pdOpenLightbox(this.src, 'หน้าแรก (Home) — แนะนำคณะและทางลัดไปหน้าประกาศรับสมัคร / หลักสูตร มีรูปแบนเนอร์ที่ผู้ออกแบบอยากให้ใส่สิ่งที่น่าสนใจเกี่ยวกับคณะใส่ลงไปเพื่อโชว์ว่าคณะมีอะไรบ้าง')">
+                        <span class="pd-zoom-hint"><i class="fa-solid fa-magnifying-glass-plus"></i></span>
+                    </div>
+                    <div class="pd-showcase-cap">หน้าแรก (Home)</div>
+                </div>
+                <div class="pd-showcase-item" data-aos="zoom-in" data-aos-delay="150">
+                    <div class="pd-img-frame">
+                        <img src="image/announcement.png" alt="หน้าประกาศรับสมัคร"
+                             onclick="pdOpenLightbox(this.src, 'หน้าประกาศรับสมัคร — ค้นหา/กรองข้อมูล พร้อมระบบ Status Label')">
+                        <span class="pd-zoom-hint"><i class="fa-solid fa-magnifying-glass-plus"></i></span>
+                    </div>
+                    <div class="pd-showcase-cap">หน้าประกาศรับสมัคร (Search & Filter)</div>
+                </div>
+                 <div class="pd-showcase-item" data-aos="zoom-in" data-aos-delay="150">
+                    <div class="pd-img-frame">
+                        <img src="image/2569.png" alt="รายละเอียดประกาศรับสมัคร"
+                             onclick="pdOpenLightbox(this.src, 'หน้ารายละเอียดประกาศรับสมัคร ')">
+                        <span class="pd-zoom-hint"><i class="fa-solid fa-magnifying-glass-plus"></i></span>
+                    </div>
+                    <div class="pd-showcase-cap">หน้าประกาศรับสมัคร (Search & Filter)</div>
+                </div>
+                <div class="pd-showcase-item" data-aos="zoom-in" data-aos-delay="250">
+                    <div class="pd-img-frame">
+                        <img src="image/curriculum.png" alt="หน้าหลักสูตร"
+                             onclick="pdOpenLightbox(this.src, 'หน้าหลักสูตร — รวมหลักสูตรทั้งหมดของคณะวิทยาศาสตร์และวิศวกรรมศาสตร์')">
+                        <span class="pd-zoom-hint"><i class="fa-solid fa-magnifying-glass-plus"></i></span>
+                    </div>
+                    <div class="pd-showcase-cap">หน้าหลักสูตร (Curriculum)</div>
+                </div>
+                <div class="pd-showcase-item" data-aos="zoom-in" data-aos-delay="250">
+                    <div class="pd-img-frame">
+                        <img src="image/หลักสูตรสาขาวิชาวิศวกรรมคอมพิวเตอร์.png" alt="หน้ารายละเอียดหลักสูตร"
+                             onclick="pdOpenLightbox(this.src, 'หน้ารายละเอียดหลักสูตร สามารถดาวน์โหลดรายละเอียดหลักสูตรที่สนใจ เป็นไฟล์ PDF ได้')">
+                        <span class="pd-zoom-hint"><i class="fa-solid fa-magnifying-glass-plus"></i></span>
+                    </div>
+                    <div class="pd-showcase-cap">หน้ารายละหลักสูตร (Curriculum)</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="pd-showcase-panel" id="panel-be">
+            <div class="pd-showcase-grid">
+                <div class="pd-showcase-item" data-aos="zoom-in" data-aos-delay="50">
+                    <div class="pd-img-frame">
+                        <img src="image/login.png" alt="หน้า Login ผู้ดูแลระบบ"
+                             onclick="pdOpenLightbox(this.src, 'หน้าเข้าสู่ระบบของผู้ดูแลระบบ (Admin Login)')"
+                             onerror="this.parentElement.innerHTML='<i class=&quot;fa-solid fa-right-to-bracket&quot; style=&quot;font-size:1.8rem&quot;></i><span>ใส่รูปที่ image/showcase-be-1.jpg</span>'">
+                        <span class="pd-zoom-hint"><i class="fa-solid fa-magnifying-glass-plus"></i></span>
+                    </div>
+                    <div class="pd-showcase-cap">หน้า Login ผู้ดูแลระบบ</div>
+                </div>
+                <div class="pd-showcase-item" data-aos="zoom-in" data-aos-delay="150">
+                    <div class="pd-img-frame">
+                        <img src="image/แดชบอด.png" alt="หน้าแดชบอดร์"
+                             onclick="pdOpenLightbox(this.src, 'หน้าแดชบอดร์สรุปข้อมูลประกาศรับสมัคร หลักสูตร ยอดเข้าชมเว็บไซต์ ')"
+                             onerror="this.parentElement.innerHTML='<i class=&quot;fa-solid fa-table-list&quot; style=&quot;font-size:1.8rem&quot;></i><span>ใส่รูปที่ image/showcase-be-2.jpg</span>'">
+                        <span class="pd-zoom-hint"><i class="fa-solid fa-magnifying-glass-plus"></i></span>
+                    </div>
+                    <div class="pd-showcase-cap">หน้าจัดการประกาศรับสมัคร </div>
+                </div>
+                <div class="pd-showcase-item" data-aos="zoom-in" data-aos-delay="150">
+                    <div class="pd-img-frame">
+                        <img src="image/จัดการTCAS.png" alt="หน้าจัดการประกาศรับสมัคร"
+                             onclick="pdOpenLightbox(this.src, 'หน้าจัดการประกาศรับสมัครของผู้ดูแลระบบ ')"
+                             onerror="this.parentElement.innerHTML='<i class=&quot;fa-solid fa-table-list&quot; style=&quot;font-size:1.8rem&quot;></i><span>ใส่รูปที่ image/showcase-be-2.jpg</span>'">
+                        <span class="pd-zoom-hint"><i class="fa-solid fa-magnifying-glass-plus"></i></span>
+                    </div>
+                    <div class="pd-showcase-cap">หน้าจัดการประกาศรับสมัคร </div>
+                </div>
+                <div class="pd-showcase-item" data-aos="zoom-in" data-aos-delay="250">
+                    <div class="pd-img-frame">
+                        <img src="image/จัดการหลักสูตร.png" alt="หน้าจัดการหลักสูตร"
+                             onclick="pdOpenLightbox(this.src, 'หน้าจัดการหลักสูตรและ')"
+                             onerror="this.parentElement.innerHTML='<i class=&quot;fa-solid fa-image&quot; style=&quot;font-size:1.8rem&quot;></i><span>ใส่รูปที่ image/showcase-be-3.jpg</span>'">
+                        <span class="pd-zoom-hint"><i class="fa-solid fa-magnifying-glass-plus"></i></span>
+                    </div>
+                    <div class="pd-showcase-cap">หน้าจัดการหลักสูตร </div>
+                </div>
+                <div class="pd-showcase-item" data-aos="zoom-in" data-aos-delay="250">
+                    <div class="pd-img-frame">
+                        <img src="image/แบนเนอร์.png" alt="หน้าจัดการรูปภาพแบนเนอร์"
+                             onclick="pdOpenLightbox(this.src, 'หน้าจัดการรูปภาพแบนเนอร์')"
+                             onerror="this.parentElement.innerHTML='<i class=&quot;fa-solid fa-image&quot; style=&quot;font-size:1.8rem&quot;></i><span>ใส่รูปที่ image/showcase-be-3.jpg</span>'">
+                        <span class="pd-zoom-hint"><i class="fa-solid fa-magnifying-glass-plus"></i></span>
+                    </div>
+                    <div class="pd-showcase-cap">หน้าจัดการรูปภาพแบนเนอร์ </div>
+                </div>
+                <div class="pd-showcase-item" data-aos="zoom-in" data-aos-delay="250">
+                    <div class="pd-img-frame">
+                        <img src="image/คลังไฟล์.png" alt="หน้าจัดจัดการคลังไฟล์เอกสารอัปโหลดและจัดการคลังไฟล์ไฟล์เอกสารทั้งหมด"
+                             onclick="pdOpenLightbox(this.src, 'จัดการคลังไฟล์เอกสารอัปโหลดและจัดการคลังไฟล์ไฟล์เอกสารทั้งหมด')"
+                             onerror="this.parentElement.innerHTML='<i class=&quot;fa-solid fa-image&quot; style=&quot;font-size:1.8rem&quot;></i><span>ใส่รูปที่ image/showcase-be-3.jpg</span>'">
+                        <span class="pd-zoom-hint"><i class="fa-solid fa-magnifying-glass-plus"></i></span>
+                    </div>
+                    <div class="pd-showcase-cap">จัดการคลังไฟล์เอกสาร </div>
+                </div>
+                <div class="pd-showcase-item" data-aos="zoom-in" data-aos-delay="250">
+                    <div class="pd-img-frame">
+                        <img src="image/แอดมิน.png" alt="จัดการบัญชีผู้ดูแลระบบจัดการสิทธิ์และข้อมูลทีมบริหารจัดการระบบ"
+                             onclick="pdOpenLightbox(this.src, 'จัดการบัญชีผู้ดูแลระบบจัดการสิทธิ์และข้อมูลทีมบริหารจัดการระบบ')"
+                             onerror="this.parentElement.innerHTML='<i class=&quot;fa-solid fa-image&quot; style=&quot;font-size:1.8rem&quot;></i><span>ใส่รูปที่ image/showcase-be-3.jpg</span>'">
+                        <span class="pd-zoom-hint"><i class="fa-solid fa-magnifying-glass-plus"></i></span>
+                    </div>
+                    <div class="pd-showcase-cap">จัดการบัญชีผู้ดูแลระบบ </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="pd-wrap pd-section" data-aos="fade-up">
+        <div class="pd-section-head">
+            <h2><i class="fa-solid fa-screwdriver-wrench"></i> Tools</h2>
+        </div>
+        <div class="pd-tools">
+            <span><i class="fa-brands fa-figma"></i> Figma</span>
+            <span><i class="fa-brands fa-html5"></i> HTML5</span>
+            <span><i class="fa-brands fa-css3-alt"></i> CSS3</span>
+            <span><i class="fa-brands fa-js"></i> JavaScript</span>
+            <span><i class="fa-brands fa-react"></i> React</span>
+            <span><i class="fa-brands fa-bootstrap"></i> Bootstrap</span>
+            <span><i class="fa-solid fa-database"></i> MySQL</span>
+            <span><i class="fa-brands fa-php"></i> PHP8</span>
+        </div>
+    </section>
+
+    <div class="pd-back-wrap">
+        <a href="index.html#projects" class="btn btn-outline"><i class="fa-solid fa-arrow-left"></i> กลับไปหน้าผลงาน</a>
+    </div>
+
+    <footer style="text-align:center; margin:50px 0 30px; color:var(--text-light);">
+        <p>&copy; 2026 Suthita Saensuriwong. Designed with passion for UX/UI.</p>
+    </footer>
+
+    <div class="pd-lightbox" id="pdLightbox" onclick="pdCloseLightbox(event)">
+        <div class="pd-lb-close" onclick="pdCloseLightbox(event)"><i class="fa-solid fa-xmark"></i></div>
+        <img id="pdLightboxImg" src="" alt="">
+        <div class="pd-lb-caption" id="pdLightboxCaption"></div>
+    </div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ once: true });
+
+        // Hero cover carousel — auto-rotate every 3 seconds
+        (function(){
+            const slides = document.querySelectorAll('.pd-cover-slide');
+            const dots = document.querySelectorAll('.pd-cover-dots span');
+            let pdCoverIndex = 0;
+            if(slides.length > 1){
+                setInterval(function(){
+                    slides[pdCoverIndex].classList.remove('active');
+                    dots[pdCoverIndex].classList.remove('active');
+                    pdCoverIndex = (pdCoverIndex + 1) % slides.length;
+                    slides[pdCoverIndex].classList.add('active');
+                    dots[pdCoverIndex].classList.add('active');
+                }, 3000);
+            }
+        })();
+
+        function pdShowTab(name, btn){
+            document.querySelectorAll('.pd-tab-btn').forEach(b => b.classList.remove('active'));
+            document.querySelectorAll('.pd-showcase-panel').forEach(p => p.classList.remove('active'));
+            btn.classList.add('active');
+            document.getElementById('panel-' + name).classList.add('active');
+        }
+
+        function pdOpenLightbox(src, caption){
+            const lb = document.getElementById('pdLightbox');
+            document.getElementById('pdLightboxImg').src = src;
+            document.getElementById('pdLightboxCaption').textContent = caption || '';
+            lb.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function pdCloseLightbox(e){
+            if(e.target.id === 'pdLightbox' || e.target.closest('.pd-lb-close')){
+                document.getElementById('pdLightbox').classList.remove('open');
+                document.body.style.overflow = '';
+            }
+        }
+
+        document.addEventListener('keydown', function(e){
+            if(e.key === 'Escape'){
+                document.getElementById('pdLightbox').classList.remove('open');
+                document.body.style.overflow = '';
+            }
+        });
+    </script>
+
+</body>
+</html>
