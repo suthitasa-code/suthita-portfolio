@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project: QE Exam Year 4 - RICH SHOP SHOP (Rysen Game)</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* สไตล์เพิ่มเติมสำหรับหน้านี้เพื่อให้ HR เห็น Mood & Tone ของโปรเจกต์คู่ขนานไปกับสไตล์หลักของคุณ */
+        .qe-tag {
+            background: rgba(0, 240, 255, 0.1);
+            color: #059da8;
+            border: 1px solid rgba(0, 240, 255, 0.3);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+        .project-meta-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            margin: 35px 0;
+            background: linear-gradient(135deg, rgba(128, 0, 0, 0.05) 0%, rgba(22, 27, 38, 0.4) 100%);
+            padding: 25px;
+            border-radius: 12px;
+            border-left: 5px solid #059da8;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+            backdrop-filter: blur(8px);
+        }
+        .meta-card {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 18px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+        }
+        .meta-card:hover {
+            transform: translateY(-2px);
+            background: rgba(255, 255, 255, 0.06);
+            border-color: rgba(5, 157, 168, 0.3);
+        }
+        .tech-badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-right: 5px;
+            margin-top: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        .ux-insight-box {
+            background: #111622;
+            border-left: 4px solid #52e5f0;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 0 8px 8px 0;
+            color: #e0e0e0;
+        }
+        .ux-insight-box strong {
+            color: #48d5df;
+        }
+        .screenshot-gallery {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+            margin-top: 30px;
+        }
+        .screenshot-item {
+            background: #161b26;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            padding: 20px;
+            overflow: hidden;
+        }
+        
+        /* สร้างสไตล์คลาสแกลเลอรีรูปภาพเล็กสำหรับแชร์ใช้ร่วมกันทุกหัวข้อ 01 - 05 */
+        .section-custom-gallery {
+            display: flex;
+            gap: 15px;
+            overflow-x: auto;
+            padding: 10px 5px;
+            scrollbar-width: thin;
+            -webkit-overflow-scrolling: touch;
+            background: rgba(0, 0, 0, 0.15);
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+        .section-custom-gallery::-webkit-scrollbar {
+            height: 8px;
+        }
+        .section-custom-gallery::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 4px;
+        }
+        .section-custom-gallery::-webkit-scrollbar-thumb {
+            background: rgba(5, 157, 168, 0.3);
+            border-radius: 4px;
+        }
+        .section-custom-gallery::-webkit-scrollbar-thumb:hover {
+            background: rgba(82, 229, 240, 0.5);
+        }
+        .section-custom-gallery img {
+            height: 230px;
+            width: auto;
+            max-width: none;
+            flex-shrink: 0;
+            object-fit: contain;
+            cursor: pointer;
+            border: 2px solid rgba(255, 255, 255, 0.08);
+            border-radius: 6px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+            transition: all 0.2s;
+        }
+        .section-custom-gallery img:hover {
+            transform: scale(1.02);
+            border-color: #52e5f0;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-blob blob-1"></div>
+
+    <main class="container" style="max-width: 1100px; margin: 0 auto; padding: 60px 20px;">
+        
+        <section class="project-header" style="margin-bottom: 50px;">
+            <span class="qe-tag">โครงงานสอบประมวลความรู้ (QE Exam) ชั้นปีที่ 4 | นิสิตรหัส 66</span>
+            <h1 style="font-size: 2.8rem; font-weight: 700; margin-bottom: 15px; color: var(--text-main);">
+                RICH SHOP (Rysen Game)
+            </h1>
+            <p style="font-size: 1.2rem; color: var(--text-light); max-width: 800px;">
+                แพลตฟอร์มเว็บแอปพลิเคชัน (Web Application) สำหรับจำหน่ายซอฟต์แวร์และคีย์เกมลิขสิทธิ์ออนไลน์แบบอัตโนมัติ ส่งตรงถึงอีเมลผู้ซื้อทันทีหลังชำระเงิน
+            </p>
+            
+            <div class="project-meta-grid">
+                <div class="meta-card" style="border-top: 3px solid #800000;">
+                    <h4 style="color: var(--primary-light); margin-bottom: 8px; font-weight: 700; font-size: 1.05rem; display: flex; align-items: center; gap: 8px;">
+                        <i class="fa-solid fa-user-nib" style="color: #059da8;"></i> บทบาทของคุณ (My Role)
+                    </h4>
+                    <p style="font-weight: 700; color: #800000; font-size: 1.25rem; margin-bottom: 5px;">UX/UI Designer</p>
+                    <p style="font-size: 0.9rem; font-weight: 400; color: var(--text-light); line-height: 1.4;">(รับผิดชอบการออกแบบและพัฒนารูปแบบ Frontend High-Fidelity Code Prototype)</p>
+                </div>
+                <div class="meta-card" style="border-top: 3px solid #059da8;">
+                    <h4 style="color: var(--primary-light); margin-bottom: 8px; font-weight: 700; font-size: 1.05rem; display: flex; align-items: center; gap: 8px;">
+                        <i class="fa-solid fa-hourglass-half" style="color: #059da8;"></i> ระยะเวลาทำงาน (Duration)
+                    </h4>
+                    <p style="font-weight: 700; font-size: 1.1rem; color: var(--text-main); margin-bottom: 4px;">3 วัน (72 ชั่วโมง) สุดท้าทาย</p>
+                    <p style="font-size: 0.9rem; color: var(--text-light); font-weight: 500;">วันศุกร์ที่ 12 - อาทิตย์ที่ 14 มิ.ย. 2569</p>
+                </div>
+                <div class="meta-card" style="border-top: 3px solid #FFD700;">
+                    <h4 style="color: var(--primary-light); margin-bottom: 8px; font-weight: 700; font-size: 1.05rem; display: flex; align-items: center; gap: 8px;">
+                        <i class="fa-solid fa-users" style="color: #059da8;"></i> โครงสร้างทีม (Team Size)
+                    </h4>
+                    <p style="font-weight: 700; font-size: 1.1rem; color: var(--text-main); margin-bottom: 4px;">11 คน <span style="font-size: 0.85rem; font-weight: 400; color: var(--text-light);">(ระบบสุ่มกลุ่มจากส่วนกลาง)</span></p>
+                    <p style="font-size: 0.9rem; color: #800000; font-weight: 600; letter-spacing: 0.3px;">1 PM | 3 SA | 2 UX/UI | 3 Dev | 2 Tester</p>
+                </div>
+                <div class="meta-card" style="border-top: 3px solid #52e5f0;">
+                    <h4 style="color: var(--primary-light); margin-bottom: 8px; font-weight: 700; font-size: 1.05rem; display: flex; align-items: center; gap: 8px;">
+                        <i class="fa-solid fa-code" style="color: #059da8;"></i> เทคโนโลยีของทีม (Tech Stack)
+                    </h4>
+                    <div style="margin-top: 8px;">
+                        <span class="tech-badge" style="background: #000; color: #fff; border: 1px solid #333;">Next.js</span>
+                        <span class="tech-badge" style="background: #00758f; color: #fff; border: 1px solid #005f73;">MySQL</span>
+                        <span class="tech-badge" style="background: #24292e; color: #fff; border: 1px solid #1c1f23;">GitHub</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="info-card card-visible" style="margin-bottom: 60px; padding: 40px; background: #fff; box-shadow: 0 15px 40px rgba(0,0,0,0.05);">
+            <h2 style="font-size: 1.8rem; color: var(--primary-color); margin-bottom: 20px; font-weight: 600;">
+                ความท้าทายเชิงบริหารและเวลา (The Challenge & Strategy)
+            </h2>
+            <p style="margin-bottom: 15px;">
+                โปรเจกต์นี้เป็นข้อสอบประมวลความรู้ (QE) ที่นิสิตไม่มีโอกาสเลือกทีมเอง และมีเวลาจำกัดเพียง <strong>3 วัน (ตั้งแต่รับโจทย์ ออกแบบ พัฒนา จนถึงนำเสนอผลงานกลุ่มละ 2 ชั่วโมง)</strong> ภายใต้สแต็กเทคโนโลยี Next.js และ MySQL ที่ซับซ้อน
+            </p>
+            <p style="margin-bottom: 20px; font-weight: 500; color: var(--text-main);">
+                🚀 กลยุทธ์การแก้ปัญหาด้าน Time-Constraint ในฐานะ UX/UI Designer:
+            </p>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+                <div style="background: #fdfdfd; padding: 20px; border-radius: 8px; border: 1px solid #eee;">
+                    <h5 style="color: var(--primary-light); margin-bottom: 10px; font-weight: 600;">1. การแบ่งหน้าที่แบบคู่ขนาน (Team Collaboration)</h5>
+                    <p style="font-size: 0.95rem; color: var(--text-light);">
+                        ในทีมมี UX/UI ทั้งหมด 2 คน เพื่อไม่ให้งานทับซ้อนและทำได้เร็วที่สุด จึงตกลงแบ่งสถาปัตยกรรมระบบอย่างชัดเจน โดย<strong>ฉันรับหน้าที่ดูแลและออกแบบฝั่ง Frontend (หน้าบ้านสำหรับลูกค้า) ทั้งหมด 100%</strong> ส่วนเพื่อนอีกคนแยกไปดูแลระบบหลังบ้าน (Backend Admin Dashboard)
+                    </p>
+                </div>
+                <div style="background: #fdfdfd; padding: 20px; border-radius: 8px; border: 1px solid #eee;">
+                    <h5 style="color: var(--primary-light); margin-bottom: 10px; font-weight: 600;">2. แนวคิด Design in Browser (ทลายคอขวด Hand-off)</h5>
+                    <p style="font-size: 0.95rem; color: var(--text-light);">
+                        หากทำ Wireframe และ UI ลง Figma ตามปกติ โปรแกรมเมอร์จะเสียเวลาอย่างมากในการแกะดีไซน์และเขียน CSS ใหม่ภายใต้เวลาที่บีบคั้น ฉันจึงเลือก<strong>ออกแบบและเขียนโค้ดออกมาเป็น High-Fidelity Code Prototype (HTML + Tailwind CSS) โดยตรง</strong> ทำให้โปรแกรมเมอร์สามารถคัดลอก Component และ Layout ไปใช้บน Next.js ได้ทันที ประหยัดเวลาของทีมไปได้มากกว่า 50%
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="project-showcase">
+            <h2 style="font-size: 2rem; text-align: center; margin-bottom: 10px; font-weight: 700; color: var(--text-main);">
+                Frontend UX/UI Architecture Showcase
+            </h2>
+            <p style="text-align: center; color: var(--text-light); margin-bottom: 5px; font-size: 1.1rem;">
+                ธีมการออกแบบ: <strong>Tech-Futuristic Theme (Dark Mode)</strong>
+            </p>
+            <p style="text-align: center; color: #555; max-width: 700px; margin: 0 auto 50px auto; font-size: 0.95rem;">
+                เน้นโทนสีเข้มลึกลับตัดกับสีฟ้า-เขียวไซแอน (Cyan) เพื่อสร้างความรู้สึกล้ำสมัย สมจริง ปลอดภัย และดึงดูดกลุ่มผู้ใช้งานที่เป็น "เกมเมอร์" ได้อย่างมีประสิทธิภาพสูงสุด
+            </p>
+
+            <div class="screenshot-gallery">
+
+                <div class="screenshot-item" data-gallery-group="01">
+                    <span class="qe-tag">01 | User Journey Exploration</span>
+                    <h3 style="color: #fff; margin-bottom: 10px; font-size: 1.4rem;">หน้าแรกและระบบจำแนกสิทธิ์เข้าถึง (Home Page - Before & After Login)</h3>
+                    <p style="color: #52e5f0; font-size: 0.85rem; font-weight: 500; margin-bottom: 15px; display: flex; align-items: center; gap: 6px;">
+                        <i class="fa-solid fa-magnifying-glass-plus"></i> คลิกที่รูปเพื่อดูขนาดเต็ม (เลื่อนดูได้เฉพาะรูปในหัวข้อนี้)
+                    </p>
+                    
+                    <div class="section-custom-gallery">
+                        <img src="img/หน้าแรกยังไม่ล็อกอิน.png" alt="RICE SHOP Home Before Login">
+                        <img src="img/ยังไม่ล็อก2.png" alt="RICE SHOP Home After Login">
+                    </div>
+                    
+                    <div class="ux-insight-box">
+                        <strong>UX Insight:</strong> ปรับปรุงลำดับขั้นข้อมูล (Information Hierarchy) เพื่อสร้างแรงจูงใจในการสมัครสมาชิก โดยผู้ใช้ทั่วไปที่ยังไม่ล็อกอินสามารถเลื่อนสำรวจและดูรายละเอียดสินค้าเชิงลึกได้อิสระ แต่ระบบจะจำกัดสิทธิ์การกดสั่งซื้อไว้ และแสดง Call-to-Action (CTA) สีฟ้าสว่างเด่นชัดเพื่อนำทางไปสู่หน้ายืนยันตัวตนอย่างราบรื่น
+                    </div>
+                </div>
+
+                <div class="screenshot-item" data-gallery-group="02">
+                    <span class="qe-tag">02 | Security & Frictionless Authentication</span>
+                    <h3 style="color: #fff; margin-bottom: 5px; font-size: 1.4rem;">ระบบสมัครสมาชิก เข้าสู่ระบบ และกู้คืนบัญชีความปลอดภัยสูง (Authentication Flow)</h3>
+                    <p style="color: #52e5f0; font-size: 0.85rem; font-weight: 500; margin-bottom: 15px; display: flex; align-items: center; gap: 6px;">
+                        <i class="fa-solid fa-magnifying-glass-plus"></i> คลิกที่รูปเพื่อดูขนาดเต็ม (เลื่อนดูได้เฉพาะรูปในหัวข้อนี้)
+                    </p>
+                    
+                    <div class="section-custom-gallery">
+                        <img src="img/เข้าสู่ระบบ.png" alt="Login Page">
+                        <img src="img/สมัครสมาชิก.png" alt="Register Page">
+                        <img src="img/กู้คืนรหัส.png" alt="Forgot Password OTP Page">
+                        <img src="img/ตั้งรหัสผ่านใหม่.png" alt="Reset Password Page">
+                    </div>
+                    
+                    <div class="ux-insight-box">
+                        <strong>UX Insight:</strong> ลดความยุ่งยากของฟอร์ม (Form Optimization) ให้เหลือเฉพาะฟิลด์ข้อมูลที่จำเป็น ออกแบบหน้าต่างขอรหัส OTP 6 หลักผ่านอีเมลให้เรียบง่าย มีฟีดแบ็กที่ชัดเจนเพื่อลดความกังวลของผู้ใช้ในขั้นตอนกู้คืนรหัสผ่าน
+                    </div>
+                </div>
+
+                <div class="screenshot-item" data-gallery-group="03">
+                    <span class="qe-tag">03 | Discoverability & Merchandising</span>
+                    <h3 style="color: #fff; margin-bottom: 10px; font-size: 1.4rem;">ระบบคัดกรองหมวดหมู่ และหน้ารายละเอียดสินค้า (Category Navigation & Product Detail)</h3>
+                    <p style="color: #52e5f0; font-size: 0.85rem; font-weight: 500; margin-bottom: 15px; display: flex; align-items: center; gap: 6px;">
+                        <i class="fa-solid fa-magnifying-glass-plus"></i> คลิกที่รูปเพื่อดูขนาดเต็ม (เลื่อนดูได้เฉพาะรูปในหัวข้อนี้)
+                    </p>
+                    
+                    <div class="section-custom-gallery">
+                        <img src="img/หมวดหมู่.png" alt="Category Dropdown Navigation">
+                        <img src="img/หมวดหมู่ปริศนา.png" alt="Category Strategy Grid">
+                        <img src="img/เกมรายการโปรด.png" alt="Favorites Page">
+                        <img src="img/รายละเอียดสินค้า.png" alt="Product Detail Page">
+                    </div>
+                    
+                    <div class="ux-insight-box">
+                        <strong>UX Insight:</strong> ออกแบบ Dropdown จัดสรรประเภทเกมออกเป็น 5 หมวดหมู่หลักอย่างเป็นระบบ (สยองขวัญ, ผจญภัย, แอคชั่น, ปริศนา, วางแผน) เพื่อให้ค้นหาง่าย ในหน้ารายละเอียดสินค้ามีการระบุจำนวนสินค้าคงคลังในคลัง (Real-time Stock Tracking) เพิ่มปุ่มปรับแต่งจำนวนแบบไมโครอินเตอร์แอกชัน และมีระบบ "รายการโปรด" (Favorites) เพื่ออำนวยความสะดวกในการกลับมาซื้อซ้ำ
+                    </div>
+                </div>
+
+                <div class="screenshot-item" data-gallery-group="04">
+                    <span class="qe-tag">04 | Transactional UX Improvement</span>
+                    <h3 style="color: #fff; margin-bottom: 10px; font-size: 1.4rem;">ระบบจัดการตะกร้าสินค้า และฟังก์ชันส่งต่อของขวัญ (Smart Cart & Gift System)</h3>
+                    <p style="color: #52e5f0; font-size: 0.85rem; font-weight: 500; margin-bottom: 15px; display: flex; align-items: center; gap: 6px;">
+                        <i class="fa-solid fa-magnifying-glass-plus"></i> คลิกที่รูปเพื่อดูขนาดเต็ม (เลื่อนดูได้เฉพาะรูปในหัวข้อนี้)
+                    </p>
+                    
+                    <div class="section-custom-gallery">
+                        <img src="img/ตะกร้าสินค้า.png" alt="Smart Cart Page">
+                        <img src="img/ส่งของขวัญ.png" alt="Gift Ordering Flow - Step 1">
+                        <img src="img/จ่ายตังของขวัญ.png" alt="Gift Ordering Flow - Step 2">
+                    </div>
+                    
+                    <div class="ux-insight-box">
+                        <strong>UX Insight:</strong> ออกแบบให้ตะกร้าสินค้าคำนวณราคาสุทธิโดยอัตโนมัติเมื่อผู้ใช้เพิ่ม/ลดหรือนำสินค้าออกทันทีโดยไม่ต้องรีโหลดหน้าเว็บ (Frictionless Calculation) พร้อมเพิ่มฟีเจอร์ "ส่งของขวัญ (GIFT)" เพื่อให้เข้ากับพฤติกรรมของเกมเมอร์ยุคใหม่ที่ต้องการซื้อเกมให้เพื่อน โดยระบบจะแปลงกระบวนการส่งคีย์เกมไปยังอีเมลปลายทางให้เข้าใจง่ายที่สุด
+                    </div>
+                </div>
+
+                <div class="screenshot-item" data-gallery-group="05">
+                    <span class="qe-tag">05 | Checkout Psychology & Customer Loyalty</span>
+                    <h3 style="color: #fff; margin-bottom: 10px; font-size: 1.4rem;">ระบบชำระเงินจำกัดเวลา และแดชบอร์ดผู้ใช้ ประวัติดตามคำสั่งซื้อ และใบเสร็จ (Checkout Gateway & Order Dashboard)</h3>
+                    <p style="color: #52e5f0; font-size: 0.85rem; font-weight: 500; margin-bottom: 15px; display: flex; align-items: center; gap: 6px;">
+                        <i class="fa-solid fa-magnifying-glass-plus"></i> คลิกที่รูปเพื่อดูขนาดเต็ม (เลื่อนดูได้เฉพาะรูปในหัวข้อนี้)
+                    </p>
+                    
+                    <div class="section-custom-gallery">
+                        <img src="img/จ่ายเอง.png" alt="PromptPay Payment Gateway with Timer">
+                        <img src="img/ประวัติการซื้อ.png" alt="Edit Profile Page">
+                        <img src="img/ประวัติการซื้อ.png" alt="Order History & Analytics Dashboard">
+                        <img src="img/ใบเสร็จ.png" alt="Digital Receipt Design">
+                    </div>
+                    
+                    <div class="ux-insight-box">
+                        <strong>UX Insight:</strong> ในหน้าชำระเงินผ่าน PromptPay ได้นำจิตวิทยาความเร่งด่วนมาใช้ด้วยการติดตั้ง <strong>Countdown Timer จำกัดเวลา 10 นาที</strong> เพื่อล็อกสินค้าและรักษาผลประโยชน์ของคลังสินค้า พร้อมออกแบบหน้า User Dashboard ให้มีตารางสรุปสถิติ (Data Visualization แบบง่าย) ว่าซื้อไปกี่เกม ยอดรวมเท่าไหร่ และแสดงสถานะความสำเร็จ/ล้มเหลวของออเดอร์พร้อมปุ่มเปิดดูใบเสร็จดิจิทัลย้อนหลังได้อย่างโปร่งใส
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="project-outcome" style="margin-top: 60px; padding-top: 40px; border-top: 1px solid #eee; text-align: center;">
+            <h3 style="font-size: 1.6rem; color: var(--primary-color); margin-bottom: 15px; font-weight: 600;">ผลลัพธ์และความสำเร็จ (Project Outcome)</h3>
+            <p style="max-width: 850px; margin: 0 auto 20px auto; color: var(--text-light); line-height: 1.8;">
+                จากการสลับวิธีทำงานมาเป็น <strong>High-Fidelity Code Prototype</strong> ทำให้ทีมสามารถจัดสรรเวลากลุ่ม 3 วันได้อย่างมีประสิทธิภาพ โปรแกรมเมอร์ใช้เวลาเพียง 1 วันครึ่งในการผูก Logic บน Next.js และต่อ MySQL สำเร็จทันเวลา ตัว Prototype ได้รับคำชมจากกรรมการสอบประมวลความรู้ว่ามีการคิดค้น UX Flow ที่ตอบโจทย์ Pain Point ของธุรกิจขายเกมจริง และมีการจัดการ Hand-off ที่เป็นมืออาชีพ
+            </p>
+            <a href="index.html" style="color: var(--primary-light); text-decoration: none; font-weight: 500; display: inline-block; margin-top: 20px;">
+                ← กลับสู่หน้าหลักพอร์ตโฟลิโอ
+            </a>
+        </section>
+
+    </main>
+
+    <div id="lightboxModal" style="display: none; position: fixed; z-index: 9999; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(10, 15, 26, 0.95); justify-content: center; align-items: center; user-select: none;">
+        <span id="closeLightbox" style="position: absolute; top: 20px; right: 30px; color: #fff; font-size: 40px; font-weight: bold; cursor: pointer; transition: 0.2s; z-index: 10000;" onmouseover="this.style.color='#52e5f0'" onmouseout="this.style.color='#fff'">&times;</span>
+        
+        <a id="prevLightbox" style="position: absolute; left: 20px; color: #fff; font-size: 30px; font-weight: bold; cursor: pointer; padding: 15px; background: rgba(255,255,255,0.05); border-radius: 50%; width: 55px; height: 55px; display: flex; justify-content: center; align-items: center; text-decoration: none; transition: 0.2s; z-index: 10000;" onmouseover="this.style.background='rgba(82,229,240,0.2)'; this.style.color='#52e5f0'" onmouseout="this.style.background='rgba(255,255,255,0.05)'; this.style.color='#fff'">&#10094;</a>
+        
+        <div style="max-width: 85%; max-height: 85%; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+            <img id="lightboxImg" src="" alt="" style="max-width: 100%; max-height: 75vh; object-fit: contain; border-radius: 8px; box-shadow: 0 10px 40px rgba(0,0,0,0.8); border: 1px solid rgba(255,255,255,0.15);">
+            <div id="lightboxCaption" style="color: #a0aec0; margin-top: 15px; font-size: 1rem; text-align: center; font-family: 'Prompt', sans-serif; font-weight: 500;"></div>
+        </div>
+        
+        <a id="nextLightbox" style="position: absolute; right: 20px; color: #fff; font-size: 30px; font-weight: bold; cursor: pointer; padding: 15px; background: rgba(255,255,255,0.05); border-radius: 50%; width: 55px; height: 55px; display: flex; justify-content: center; align-items: center; text-decoration: none; transition: 0.2s; z-index: 10000;" onmouseover="this.style.background='rgba(82,229,240,0.2)'; this.style.color='#52e5f0'" onmouseout="this.style.background='rgba(255,255,255,0.05)'; this.style.color='#fff'">&#10095;</a>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const modal = document.getElementById("lightboxModal");
+            const lightboxImg = document.getElementById("lightboxImg");
+            const lightboxCaption = document.getElementById("lightboxCaption");
+            const closeBtn = document.getElementById("closeLightbox");
+            const prevBtn = document.getElementById("prevLightbox");
+            const nextBtn = document.getElementById("nextLightbox");
+            
+            // เก็บตัวแปรอ้างอิงกลุ่มปัจจุบัน
+            let currentGroupImages = [];
+            let currentIndex = 0;
+            
+            // วนลูปหากล่องหัวข้อใหญ่ (screenshot-item) ทุกๆ ตัว
+            const items = document.querySelectorAll(".screenshot-item");
+            
+            items.forEach(item => {
+                // ค้นหาภาพย่อยเฉพาะที่อยู่ภายในหัวข้อนั้นๆ
+                const groupImages = Array.from(item.querySelectorAll(".section-custom-gallery img"));
+                const groupTitle = item.querySelector(".qe-tag").textContent;
+                
+                groupImages.forEach((img, index) => {
+                    img.addEventListener("click", () => {
+                        // เมื่อคลิกภาพ ให้ล็อกกลุ่มภาพเลื่อนเฉพาะของหัวข้อนี้เท่านั้น
+                        currentGroupImages = groupImages;
+                        currentIndex = index;
+                        openLightbox(groupTitle);
+                    });
+                });
+            });
+            
+            function openLightbox(groupTitle) {
+                if (currentGroupImages.length === 0) return;
+                
+                const img = currentGroupImages[currentIndex];
+                lightboxImg.src = img.src;
+                
+                // แสดงชื่อหัวข้อกำกับพร้อมคำอธิบายภาพ เพื่อบอกว่าตอนนี้กำลังสไลด์อยู่ที่พาร์ทไหน
+                lightboxCaption.innerHTML = `<span style="color:#52e5f0; font-weight:600;">[${groupTitle}]</span> ${img.alt || ''} <br> <span style="font-size:0.85rem; color:#6b7280; display:inline-block; margin-top:5px;">ภาพที่ ${currentIndex + 1} จาก ${currentGroupImages.length}</span>`;
+                
+                modal.style.display = "flex";
+                document.body.style.overflow = "hidden"; // ล็อกการสกロールหน้าเว็บเบื้องหลัง
+            }
+            
+            function closeLightbox() {
+                modal.style.display = "none";
+                document.body.style.overflow = "auto"; // คืนค่าหน้าเว็บหลักให้สกロールได้ปกติ
+            }
+            
+            function nextImage() {
+                if (currentGroupImages.length === 0) return;
+                currentIndex = (currentIndex + 1) % currentGroupImages.length;
+                
+                // ดึงหัวข้อของกลุ่มปัจจุบันมาแสดงบนแคปชั่นต่อเนื่อง
+                const activeItem = currentGroupImages[currentIndex].closest(".screenshot-item");
+                const title = activeItem ? activeItem.querySelector(".qe-tag").textContent : "";
+                openLightbox(title);
+            }
+            
+            function prevImage() {
+                if (currentGroupImages.length === 0) return;
+                currentIndex = (currentIndex - 1 + currentGroupImages.length) % currentGroupImages.length;
+                
+                const activeItem = currentGroupImages[currentIndex].closest(".screenshot-item");
+                const title = activeItem ? activeItem.querySelector(".qe-tag").textContent : "";
+                openLightbox(title);
+            }
+            
+            closeBtn.addEventListener("click", closeLightbox);
+            nextBtn.addEventListener("click", nextImage);
+            prevBtn.addEventListener("click", prevImage);
+            
+            // ปิดเมื่อคลิกพื้นที่ว่างรอบรูป
+            modal.addEventListener("click", function(e) {
+                if (e.target === modal) {
+                    closeLightbox();
+                }
+            });
+            
+            // คีย์บอร์ดนำทาง (Esc = ปิด, ซ้าย/ขวา = เลื่อนในกลุ่ม)
+            document.addEventListener("keydown", function(e) {
+                if (modal.style.display === "flex") {
+                    if (e.key === "Escape") closeLightbox();
+                    if (e.key === "ArrowRight") nextImage();
+                    if (e.key === "ArrowLeft") prevImage();
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
