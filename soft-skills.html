@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Soft Skills & Journey</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* ================= MODERN & WARM THEME ================= */
+        :root {
+            --primary: #ff758c;
+            --secondary: #ff7eb3;
+            --accent: #6a11cb;
+            --text-dark: #2d3436;
+            --text-gray: #636e72;
+            --bg-color: #fff5f8;
+            --card-bg: rgba(255, 255, 255, 0.85);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Prompt', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-dark);
+            overflow-x: hidden;
+            position: relative;
+            background-image:
+                radial-gradient(at 0% 0%, rgba(255, 117, 140, 0.12) 0px, transparent 50%),
+                radial-gradient(at 100% 0%, rgba(106, 17, 203, 0.08) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(255, 126, 179, 0.12) 0px, transparent 50%);
+            background-attachment: fixed;
+        }
+
+        /* ================= FLOATING HEARTS BACKGROUND ================= */
+        .hearts-bg {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .heart-particle {
+            position: absolute;
+            bottom: -10%;
+            font-size: 22px;
+            color: var(--secondary);
+            opacity: 0;
+            animation-name: floatHeart;
+            animation-timing-function: ease-in;
+            animation-iteration-count: infinite;
+            filter: drop-shadow(0 2px 4px rgba(255,117,140,0.3));
+        }
+
+        @keyframes floatHeart {
+            0% {
+                transform: translateY(0) translateX(0) rotate(0deg) scale(0.7);
+                opacity: 0;
+            }
+            10% { opacity: 0.85; }
+            50% {
+                transform: translateY(-50vh) translateX(15px) rotate(15deg) scale(1);
+            }
+            90% { opacity: 0.6; }
+            100% {
+                transform: translateY(-105vh) translateX(-10px) rotate(-10deg) scale(0.8);
+                opacity: 0;
+            }
+        }
+
+        /* Nav */
+        .top-nav {
+            padding: 20px 40px;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+            background: rgba(252, 252, 252, 0.8);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .btn-back {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: 0.3s;
+        }
+
+        .btn-back:hover {
+            color: var(--primary);
+            transform: translateX(-5px);
+        }
+
+        /* Hero Section (The HR Pitch) */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 130px 20px 60px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-inner {
+            max-width: 1100px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        /* รูปโปรไฟล์ฝั่งซ้าย แบบลอยตามการเลื่อน */
+        .hero-photo {
+            flex: 0 0 320px;
+            position: sticky;
+            top: 130px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 18px;
+        }
+
+        .profile-frame {
+            width: 280px;
+            height: 360px;
+            border-radius: 30px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 25px 50px rgba(255, 117, 140, 0.3);
+            border: 4px solid #fff;
+            animation: floatY 4s ease-in-out infinite;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+        }
+
+        .profile-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        @keyframes floatY {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-14px); }
+        }
+
+        .profile-badge {
+            position: absolute;
+            bottom: -14px;
+            right: -14px;
+            width: 56px;
+            height: 56px;
+            background: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 18px rgba(0,0,0,0.12);
+            font-size: 1.4rem;
+            color: var(--primary);
+            animation: pulseBadge 2.4s ease-in-out infinite;
+        }
+
+        @keyframes pulseBadge {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.12); }
+        }
+
+        .hero-name-tag {
+            text-align: center;
+        }
+
+        .hero-name-tag h3 {
+            font-size: 1.2rem;
+            color: var(--text-dark);
+            font-weight: 600;
+        }
+
+        .hero-name-tag span {
+            font-size: 0.9rem;
+            color: var(--primary);
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .hero-content {
+            flex: 1;
+            background: var(--card-bg);
+            backdrop-filter: blur(20px);
+            padding: 55px 45px;
+            border-radius: 30px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.05);
+            border: 1px solid rgba(255,255,255,0.6);
+            transform: translateY(30px);
+            opacity: 0;
+            animation: floatUp 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+            text-align: left;
+        }
+
+        .quote-icon {
+            font-size: 2.6rem;
+            color: var(--primary);
+            opacity: 0.25;
+            margin-bottom: 18px;
+        }
+
+        .hero-title {
+            font-size: 2.1rem;
+            font-weight: 700;
+            margin-bottom: 22px;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1.4;
+        }
+
+        .hero-text {
+            font-size: 1.1rem;
+            color: var(--text-gray);
+            line-height: 1.8;
+        }
+
+        .hero-text strong {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        /* Category Sections */
+        .section-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .story-block {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            margin-bottom: 120px;
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        .story-block.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .story-block.reverse {
+            flex-direction: row-reverse;
+        }
+
+        .story-text {
+            flex: 1;
+        }
+
+        .story-text h2 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: var(--text-dark);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .story-text h2 i {
+            color: var(--primary);
+            background: rgba(255, 117, 140, 0.1);
+            padding: 15px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+        }
+
+        .story-text p {
+            font-size: 1.05rem;
+            color: var(--text-gray);
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .skill-tag {
+            display: inline-block;
+            background: linear-gradient(135deg, rgba(106, 17, 203, 0.05), rgba(37, 117, 252, 0.05));
+            color: var(--accent);
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-weight: 500;
+            font-size: 0.95rem;
+            border: 1px solid rgba(106, 17, 203, 0.1);
+            margin-top: 10px;
+        }
+
+        .gallery-hint {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 16px;
+            font-size: 0.85rem;
+            color: var(--primary);
+            opacity: 0.8;
+        }
+
+        /* ================= GALLERY: รองรับรูปแนวตั้ง/แนวนอน ผสมกันแบบ masonry ================= */
+        .story-gallery {
+            flex: 1;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-auto-rows: 90px;
+            gap: 14px;
+        }
+
+        .img-wrapper {
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+            position: relative;
+            transition: 0.4s;
+            cursor: pointer;
+        }
+
+        .img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+            display: block;
+        }
+
+        .img-wrapper::after {
+            content: '\f00e';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            color: #fff;
+            background: rgba(106, 17, 203, 0.0);
+            opacity: 0;
+            transition: 0.35s;
+        }
+
+        .img-wrapper:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(255, 117, 140, 0.25);
+        }
+
+        .img-wrapper:hover img {
+            transform: scale(1.08);
+        }
+
+        .img-wrapper:hover::after {
+            opacity: 1;
+            background: rgba(106, 17, 203, 0.35);
+        }
+
+        /* ขนาด span สำหรับรูปแนวตั้งและแนวนอนแบบ masonry */
+        .span-tall   { grid-row: span 3; }
+        .span-mid    { grid-row: span 2; }
+        .span-wide   { grid-column: span 2; grid-row: span 2; }
+        .span-wide-flat { grid-column: span 2; grid-row: span 1; }
+
+        /* Conclusion */
+        .conclusion {
+            text-align: center;
+            padding: 80px 20px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border-radius: 40px 40px 0 0;
+            margin-top: 60px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .conclusion h2 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+        }
+
+        .conclusion p {
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0.9;
+            line-height: 1.8;
+        }
+
+        /* ================= LIGHTBOX ================= */
+        .lightbox-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(45, 52, 54, 0.85);
+            backdrop-filter: blur(6px);
+            z-index: 1000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+        }
+
+        .lightbox-overlay.active {
+            display: flex;
+            animation: fadeInLb 0.3s ease;
+        }
+
+        @keyframes fadeInLb {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .lightbox-box {
+            position: relative;
+            max-width: 850px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .lightbox-box img {
+            max-width: 100%;
+            max-height: 78vh;
+            border-radius: 20px;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.4);
+            border: 4px solid #fff;
+        }
+
+        .lightbox-caption {
+            color: #fff;
+            margin-top: 16px;
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        .lightbox-close, .lightbox-nav {
+            position: absolute;
+            background: rgba(255,255,255,0.9);
+            color: var(--primary);
+            border: none;
+            border-radius: 50%;
+            width: 48px;
+            height: 48px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.25s;
+            box-shadow: 0 8px 18px rgba(0,0,0,0.2);
+        }
+
+        .lightbox-close:hover, .lightbox-nav:hover {
+            background: var(--primary);
+            color: #fff;
+            transform: scale(1.1);
+        }
+
+        .lightbox-close {
+            top: -55px;
+            right: 0;
+        }
+
+        .lightbox-nav.prev { left: -10px; top: 50%; transform: translateY(-50%); }
+        .lightbox-nav.next { right: -10px; top: 50%; transform: translateY(-50%); }
+
+        @media (max-width: 700px) {
+            .lightbox-nav.prev { left: 0; }
+            .lightbox-nav.next { right: 0; }
+            .lightbox-close { top: -50px; }
+        }
+
+        /* Animations */
+        @keyframes floatUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 900px) {
+            .hero-inner { flex-direction: column; }
+            .hero-photo { position: static; flex: none; }
+            .story-block, .story-block.reverse {
+                flex-direction: column;
+                gap: 30px;
+            }
+            .hero-title { font-size: 1.7rem; }
+            .hero-content { padding: 40px 25px; text-align: center; }
+            .story-gallery { grid-auto-rows: 70px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- พื้นหลังอนิเมชั่นหัวใจสีชมพูลอย -->
+    <div class="hearts-bg" id="heartsBg"></div>
+
+    <nav class="top-nav">
+        <a href="index.html" class="btn-back"><i class="fa-solid fa-arrow-left"></i> กลับหน้าหลัก</a>
+    </nav>
+
+    <!-- Hero Section (การแนะนำตัวสไตล์สัมภาษณ์ HR) -->
+    <header class="hero">
+        <div class="hero-inner">
+
+            <!-- รูปโปรไฟล์ด้านซ้าย ลอยตามการเลื่อนหน้าจอ -->
+            <div class="hero-photo">
+                <div class="profile-frame">
+                    <img src="imagecream/วิปครีม3.jpg" alt="รูปโปรไฟล์ของหนู">
+                    <div class="profile-badge"><i class="fa-solid fa-laptop-code"></i></div>
+                </div>
+                <div class="hero-name-tag">
+                    <h3>Computer Science Student</h3>
+                    <span><i class="fa-solid fa-heart"></i> Tech + Soft Skills</span>
+                </div>
+            </div>
+
+            <div class="hero-content">
+                <i class="fa-solid fa-quote-left quote-icon"></i>
+                <h1 class="hero-title">"หนูไม่ได้ชอบแค่การออกแบบ<br>แต่หนูรักการสื่อสารและการทำงานกับคนค่ะ"</h1>
+                <p class="hero-text">
+                    สวัสดีค่ะ ถ้าให้หนูแนะนำตัวเองในมุมที่นอกเหนือจากเรื่อง Tech
+                    หนูเป็นคนที่<strong>ชอบทำคอนเทนต์ ชอบพูด และชอบอยู่หน้ากล้องมากค่ะ</strong>
+                    ตลอด 4 ปีในมหาลัย หนูพาตัวเองไปลุยกิจกรรมมากมาย ทั้งเป็น PR, ถ่ายแบบโปรโมต,
+                    เป็นพิธีกร และทำคลิปสัมภาษณ์ ซึ่งประสบการณ์ทั้งหมดนี้หล่อหลอมให้หนูเป็นนักวิทยาการคอมพิวเตอร์ที่
+                    <strong>" กล้าแสดงออก และสื่อสารได้ดี"</strong> ค่ะ
+                </p>
+            </div>
+
+        </div>
+    </header>
+
+    <main class="section-container">
+
+        <!-- หมวด 1: Content Creator & PR -->
+        <div class="story-block">
+            <div class="story-text">
+                <h2><i class="fa-solid fa-video"></i> Content Creator & PR</h2>
+                <p>
+                    หนูเริ่มทำตั้งแต่ปี 1 เลยค่ะ ได้เป็น PR ช่วยโปรโมตสาขา และที่ภูมิใจมากๆ คือการได้ทำคอนเทนต์วิดีโอลง TikTok,IG,Facebook ตั้งแต่ปี1-ปัจจุบัน ให้กับคณะวิทยาศาสตร์และวิศวะกรรมศาสตร์ หนูรับหน้าที่สัมภาษณ์น้องๆ เฟรชชี่ตั้งแต่รุ่น KU84, 85 จนถึง KU86 ทำต่อเนื่องมาตลอดทุกปีเลยค่ะ หนูรู้สึกแฮปปี้มากกับการทำงานส่วนนี้ ได้ประสบการณ์ใหม่ๆหลายอย่าง
+                </p>
+                <div class="skill-tag">
+                    <i class="fa-solid fa-check"></i> ทักษะที่ได้: ความคิดสร้างสรรค์, การจับประเด็น และความสม่ำเสมอ
+                </div>
+                <div class="gallery-hint"><i class="fa-solid fa-hand-pointer"></i> คลิกที่รูปเพื่อดูภาพขนาดใหญ่ และเลื่อนดูรูปอื่นในหมวดนี้ได้เลยค่ะ</div>
+            </div>
+            <div class="story-gallery" data-group="content">
+                <div class="img-wrapper span-tall"><img src="imagecream/IG.jpg" alt="ทำคอนเทนต์ลง IG คณะ"></div>
+                <div class="img-wrapper span-tall"><img src="imagecream/IG1.jpg" alt="ทำคอนเทนต์ลง IG คณะ"></div>
+                <div class="img-wrapper span-tall"><img src="imagecream/IG2.jpg" alt="ทำคอนเทนต์ลง IG คณะ"></div>
+                <div class="img-wrapper span-tall"><img src="imagecream/Tiktok.jpg" alt="ทำคอนเทนต์ลง TikTok คณะ"></div>
+                <div class="img-wrapper span-tall"><img src="imagecream/Tiktok1.jpg" alt="ทำคอนเทนต์ลง TikTok คณะ"></div>
+                <div class="img-wrapper span-tall"><img src="imagecream/TIKTOK3333.jpg" alt="ทำคอนเทนต์ลง TikTok คณะ"></div>
+                <div class="img-wrapper span-mid"><img src="imagecream/สัมภาษณ์.jpg" alt="สัมภาษณ์รุ่นน้อง "></div>
+                <div class="img-wrapper"><img src="imagecream/โปรโหมดสาขา.jpg" alt="ถ่ายรูปโปรโมตสาขา วิทยาการคอมพิวเตอร์"></div>
+                <div class="img-wrapper"><img src="imagecream/ถ่ายโปรโหมดสาขา22.jpg" alt="ถ่ายรูปโปรโมตสาขา วิทยาการคอมพิวเตอร์"></div>
+                <div class="img-wrapper"><img src="imagecream/เบื้องหลังถ่ายทำ.jpg" alt="เบื้องหลังการถ่ายทำ"></div>
+                <div class="img-wrapper span-mid"><img src="imagecream/เบื้องหลัง.jpg" alt="เบื้องหลังการถ่ายทำ"></div>
+               
+            </div>
+        </div>
+
+        <!-- หมวด 2: พิธีกรและเวที -->
+        <div class="story-block reverse">
+            <div class="story-text">
+                <h2><i class="fa-solid fa-microphone-lines"></i> Public Speaking & Emcee</h2>
+                <p>
+                    นอกจากหน้ากล้องแล้ว บนเวทีหนูก็สู้ค่ะ หนูเคยรับหน้าที่เป็นพิธีกรดำเนินงานในงานใหญ่ๆ ของคณะ ได้แนะนำคณะบนเวทีต่อหน้าคนเยอะๆ และยังได้เป็นพิธีกรงานบายเนียร์ (Bye-Nior) ของสาขาวิทยาการคอมพิวเตอร์ด้วยค่ะ
+                </p>
+                <div class="skill-tag">
+                    <i class="fa-solid fa-check"></i> ทักษะที่ได้: ไหวพริบ, การแก้ปัญหาเฉพาะหน้า และความมั่นใจ
+                </div>
+                <div class="gallery-hint"><i class="fa-solid fa-hand-pointer"></i> คลิกที่รูปเพื่อดูภาพขนาดใหญ่ และเลื่อนดูรูปอื่นในหมวดนี้ได้เลยค่ะ</div>
+            </div>
+            <div class="story-gallery" data-group="emcee">
+                <div class="img-wrapper span-wide"><img src="imagecream/พิธีกรคณะ.jpg" alt="พิธีกรงานคณะ"></div>
+                <div class="img-wrapper span-tall"><img src="imagecream/บายเนียร์.jpg" alt="งานบายเนียร์"></div>
+                <div class="img-wrapper"><img src="imagecream/พิธีกรคณะ1.jpg" alt="การพูดบนเวที"></div>
+                <div class="img-wrapper"><img src="imagecream/สัมน้อง.jpg" alt=""></div>
+                <div class="img-wrapper"><img src="imagecream/สัมน้อง222.jpg" alt=""></div>
+                <div class="img-wrapper"><img src="imagecream/พิธีกรบายเนีย์.jpg" alt="พิธีกรงานบายเนียร์"></div>
+                <div class="img-wrapper span-mid"><img src="imagecream/พิธีกร33.jpg" alt="พิธีกรงานรับน้อง"></div>
+            </div>
+        </div>
+
+        <!-- หมวด 3: แอมบาสเดอร์และการทำงานเป็นทีม -->
+        <div class="story-block">
+            <div class="story-text">
+                <h2><i class="fa-solid fa-people-group"></i> Ambassador & Outreach</h2>
+                <p>
+                    หนูชอบการได้ออกไปเจอผู้คนใหม่ๆ ค่ะ หนูเคยได้เป็นแบบถ่ายโปรโมตเสื้อ KURUN 2025 และที่สนุกสุดๆ คือการได้ไปแนะแนวน้องๆ ร่วมกับทางคณะ   และมีการชวนน้องๆมาถ่ายคอนเทนต์ลงช่องTiktokของคณะ ได้พูดคุยและส่งต่อแรงบันดาลใจให้น้องๆ มัธยมค่ะ
+                </p>
+                <div class="skill-tag">
+                    <i class="fa-solid fa-check"></i> ทักษะที่ได้: มนุษยสัมพันธ์, การทำงานเป็นทีม และการสื่อสารภาพลักษณ์องค์กร
+                </div>
+                <div class="gallery-hint"><i class="fa-solid fa-hand-pointer"></i> คลิกที่รูปเพื่อดูภาพขนาดใหญ่ และเลื่อนดูรูปอื่นในหมวดนี้ได้เลยค่ะ</div>
+            </div>
+            <div class="story-gallery" data-group="ambassador">
+                <div class="img-wrapper span-mid"><img src="imagecream/วิ่ง.jpg" alt="">ถ่ายโปรโมตเสื้อ KURUN 2025</div>
+                <div class="img-wrapper span-tall"><img src="imagecream/ถ่ายเสื้อวิ่ง.jpg" alt="ถ่ายโปรโมตเสื้อ KURUN 2025"></div>
+                <div class="img-wrapper span-tall"><img src="imagecream/ถ่ายเสื้อวิ่ง1.jpg" alt="ถ่ายโปรโมตเสื้อ KURUN 2025"></div>
+                <div class="img-wrapper span-mid"><img src="imagecream/แนะแนวน้อง.jpg" alt="แนะแนวน้องๆ  และมีการชวนน้องๆมาถ่ายคอนเทนต์ลงช่องTiktokของคณะ"></div>
+                <div class="img-wrapper span-mid"><img src="imagecream/แนะแนวน้อง222.jpg" alt="แนะแนวน้องๆ  และมีการชวนน้องๆมาถ่ายคอนเทนต์ลงช่องTiktokของคณะ"></div>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="conclusion">
+        <h2>"อย่ากลัวที่จะเริ่มทำสิ่งที่ไม่เคยทำ เพราะนั่นคือจุดเริ่มต้นของการเติบโต"</h2>
+        <p>
+            หนูเชื่อว่าในสายงาน Tech การออกแบบเขียนโค้ดเก่งเป็นเรื่องสำคัญ
+            แต่การสื่อสารและทำงานร่วมกับคนอื่นได้ดี เป็นสิ่งที่จะทำให้โปรเจกต์นั้นสำเร็จอย่างสมบูรณ์แบบค่ะ
+            หนูพร้อมที่จะนำทั้ง Hard Skills และ Soft Skills ที่หนูมี ไปต่อยอดและพัฒนาตนเองต่อไปค่ะ
+        </p>
+    </footer>
+
+    <!-- Lightbox สำหรับเลื่อนดูรูปทีละหมวด -->
+    <div class="lightbox-overlay" id="lightbox">
+        <div class="lightbox-box">
+            <button class="lightbox-close" id="lbClose"><i class="fa-solid fa-xmark"></i></button>
+            <button class="lightbox-nav prev" id="lbPrev"><i class="fa-solid fa-chevron-left"></i></button>
+            <img id="lbImg" src="" alt="">
+            <button class="lightbox-nav next" id="lbNext"><i class="fa-solid fa-chevron-right"></i></button>
+            <p class="lightbox-caption" id="lbCaption"></p>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            /* ---------- Scroll reveal animation ---------- */
+            const blocks = document.querySelectorAll('.story-block');
+            const observerOptions = { threshold: 0.15, rootMargin: "0px 0px -50px 0px" };
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+            blocks.forEach(block => observer.observe(block));
+
+            /* ---------- พื้นหลังหัวใจลอย ---------- */
+            const heartsBg = document.getElementById('heartsBg');
+            const heartIcons = ['💗', '💖', '💕', '💓', '❤️'];
+            const totalHearts = 22;
+            for (let i = 0; i < totalHearts; i++) {
+                const heart = document.createElement('span');
+                heart.className = 'heart-particle';
+                heart.textContent = heartIcons[Math.floor(Math.random() * heartIcons.length)];
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.fontSize = (14 + Math.random() * 22) + 'px';
+                const duration = 9 + Math.random() * 10;
+                heart.style.animationDuration = duration + 's';
+                heart.style.animationDelay = (Math.random() * duration) + 's';
+                heartsBg.appendChild(heart);
+            }
+
+            /* ---------- Lightbox: คลิกรูปเพื่อดูใหญ่ และเลื่อนดูรูปในหมวดเดียวกัน ---------- */
+            const lightbox = document.getElementById('lightbox');
+            const lbImg = document.getElementById('lbImg');
+            const lbCaption = document.getElementById('lbCaption');
+            const lbClose = document.getElementById('lbClose');
+            const lbPrev = document.getElementById('lbPrev');
+            const lbNext = document.getElementById('lbNext');
+
+            let currentGroupImgs = [];
+            let currentIndex = 0;
+
+            function openLightbox(groupImgs, index) {
+                currentGroupImgs = groupImgs;
+                currentIndex = index;
+                updateLightboxImg();
+                lightbox.classList.add('active');
+            }
+
+            function updateLightboxImg() {
+                const imgEl = currentGroupImgs[currentIndex];
+                lbImg.src = imgEl.src;
+                lbCaption.textContent = imgEl.alt || '';
+            }
+
+            function closeLightbox() {
+                lightbox.classList.remove('active');
+            }
+
+            document.querySelectorAll('.story-gallery').forEach(gallery => {
+                const imgs = Array.from(gallery.querySelectorAll('img'));
+                imgs.forEach((img, idx) => {
+                    img.closest('.img-wrapper').addEventListener('click', () => {
+                        openLightbox(imgs, idx);
+                    });
+                });
+            });
+
+            lbClose.addEventListener('click', closeLightbox);
+            lightbox.addEventListener('click', (e) => {
+                if (e.target === lightbox) closeLightbox();
+            });
+            lbPrev.addEventListener('click', () => {
+                currentIndex = (currentIndex - 1 + currentGroupImgs.length) % currentGroupImgs.length;
+                updateLightboxImg();
+            });
+            lbNext.addEventListener('click', () => {
+                currentIndex = (currentIndex + 1) % currentGroupImgs.length;
+                updateLightboxImg();
+            });
+            document.addEventListener('keydown', (e) => {
+                if (!lightbox.classList.contains('active')) return;
+                if (e.key === 'Escape') closeLightbox();
+                if (e.key === 'ArrowLeft') lbPrev.click();
+                if (e.key === 'ArrowRight') lbNext.click();
+            });
+        });
+    </script>
+</body>
+</html>
